@@ -19,4 +19,5 @@ test:
     - pip install pytest==5.* pytest-flake8 pipfile-requirements
     - pipfile2req Pipfile.lock > requirements.txt
     - pip install -r requirements.txt
+    - pytest . -v
     - pytest . --flake8 -v
