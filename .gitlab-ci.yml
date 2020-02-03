@@ -16,5 +16,7 @@ before_script:
 
 test:
   script:
-  - pip install pytest==5.* pytest-flake8
-  - pytest . --flake8 -v
+    - pip install pytest==5.* pytest-flake8 pipfile-requirements
+    - pipfile2req Pipfile.lock > requirements.txt
+    - pip install -r requirements.txt
+    - pytest . --flake8 -v
