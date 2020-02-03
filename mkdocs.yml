@@ -1,0 +1,21 @@
+# Project information
+site_name: backboneQL
+site_description: 'Python bindings for backboneQL'
+site_author: 'Jakub Dubec'
+site_url: 'https://gitlab.backbone.sk/backboneql/backboneql-python'
+
+# Repository
+repo_name: 'backboneql/backboneql-python'
+repo_url: 'https://gitlab.backbone.sk/backboneql/backboneql-python'
+
+# Configuration
+theme:
+  name: 'material'
+  language: 'en'
+
+# Extensions
+markdown_extensions:
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
