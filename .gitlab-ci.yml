@@ -13,10 +13,14 @@ before_script:
   - python3 -V
   - python3 -m venv venv
   - source venv/bin/activate
+  - pip install pipfile-requirements
   - pipfile2req --dev Pipfile.lock > requirements.txt
   - pip install -r requirements.txt
 
 test:
+  stage: test
+  only:
+    - master
   script:
     - pytest . -v
     - pytest . --flake8 -v

@@ -11,6 +11,7 @@ mkdocs-material = "*"
 pygments = "*"
 pytest-flake8 = "*"
 pytest-cov = "*"
+pipfile-requirements = "*"
 
 [packages]
 pydantic = "==1.*"
