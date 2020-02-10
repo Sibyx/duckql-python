@@ -4,6 +4,13 @@ site_description: 'Python bindings for backboneQL'
 site_author: 'Jakub Dubec'
 site_url: 'https://gitlab.backbone.sk/backboneql/backboneql-python'
 
+# Navigation
+nav:
+  - Home: index.md
+  - Functions: functions.md
+  - Properties: properties.md
+  - Structures: structures.md
+
 # Repository
 repo_name: 'backboneql/backboneql-python'
 repo_url: 'https://gitlab.backbone.sk/backboneql/backboneql-python'

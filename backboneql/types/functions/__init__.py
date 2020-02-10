@@ -4,6 +4,7 @@ from .convert_timezone import ConvertTimezone
 from .count import Count
 from .current_date import CurrentDate
 from .date_format import DateFormat
+from .date_sub import DateSub
 
 __all__ = [
     "Avg",
@@ -11,5 +12,6 @@ __all__ = [
     "ConvertTimezone",
     "Count",
     "CurrentDate",
-    "DateFormat"
+    "DateFormat",
+    "DateSub"
 ]
