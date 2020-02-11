@@ -17,9 +17,8 @@ setup(
     name='backboneql_python',
     version=meta['__version__'],
     packages=[
-        'tests', 'backboneql', 'backboneql.types', 'backboneql.types.functions', 'backboneql.types.functions.tests',
-        'backboneql.types.properties', 'backboneql.types.properties.tests',
-        'backboneql.types.structures', 'backboneql.types.structures.tests'
+        'backboneql', 'backboneql.types', 'backboneql.types.functions', 'backboneql.types.properties',
+        'backboneql.types.structures',
     ],
     install_requires=[
         'pydantic==1.*'
