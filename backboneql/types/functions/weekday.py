@@ -27,4 +27,3 @@ class Weekday(BaseFunction):
             sql = f"{sql} AS {self.alias}"
 
         return sql
-
