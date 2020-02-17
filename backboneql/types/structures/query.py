@@ -15,4 +15,5 @@ class Query(BaseType):
     conditions: List = field(default_factory=list)
 
     def to_sql(self) -> str:
-        pass
+        sql = f"SELECT {', '.join(map(str, self.properties))} FROM {self.entity}"
+        return sql
