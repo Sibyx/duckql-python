@@ -19,4 +19,3 @@ class Between(BaseType):
 
     def to_sql(self) -> str:
         return f"{self.property} BETWEEN {self.values[0]} AND {self.values[1]}"
-

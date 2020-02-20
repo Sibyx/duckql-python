@@ -1,4 +1,4 @@
-from backboneql.types.properties import Property, Constant
+from backboneql.types.properties import Property
 from backboneql.types.structures import Order
 
 

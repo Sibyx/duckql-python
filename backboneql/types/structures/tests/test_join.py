@@ -22,5 +22,6 @@ def test_simple():
         "t"
     )
 
-    sql = "LEFT JOIN transactions ON ((transactions.user_id = users.id) AND (transactions.creator_id != users.id)) AS t"
+    sql = "LEFT JOIN transactions ON ((transactions.user_id = users.id) " \
+          "AND (transactions.creator_id != users.id)) AS t"
     assert str(my_join) == sql
