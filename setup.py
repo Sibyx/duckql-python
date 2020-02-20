@@ -21,7 +21,8 @@ setup(
         'backboneql.types.structures',
     ],
     install_requires=[
-        'pydantic==1.*'
+        'pydantic==1.*',
+        'click==7.*'
     ],
     url='https://gitlab.backbone.sk/backboneql/backboneql-python',
     license='MIT',

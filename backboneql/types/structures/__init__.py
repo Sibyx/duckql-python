@@ -4,6 +4,9 @@ from .query import Query
 from .limit import Limit
 from .distinct import Distinct
 from .interval import Interval
+from .comparision import Comparision
+from .between import Between
+from .operator import Operator
 
 __all__ = [
     "Join",
@@ -11,5 +14,8 @@ __all__ = [
     "Query",
     "Limit",
     "Distinct",
-    "Interval"
+    "Interval",
+    "Comparision",
+    "Between",
+    "Operator"
 ]

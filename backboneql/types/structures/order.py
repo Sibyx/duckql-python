@@ -11,12 +11,12 @@ from backboneql.types.properties import Property
 
 @dataclass
 class Order(BaseType):
-    class OrderDirection(Enum):
+    class Direction(Enum):
         ASC = 'ASC'
         DESC = 'DESC'
 
     property: Union[Property, BaseFunction]
-    kind: OrderDirection = OrderDirection.ASC
+    kind: Direction = Direction.ASC
 
     def __post_init__(self):
         if hasattr(self.property, 'alias') and self.property.alias is not None:
