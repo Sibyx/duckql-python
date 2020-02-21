@@ -17,8 +17,7 @@ setup(
     name='backboneql_python',
     version=meta['__version__'],
     packages=[
-        'backboneql', 'backboneql.types', 'backboneql.types.functions', 'backboneql.types.properties',
-        'backboneql.types.structures',
+        'backboneql', 'backboneql.functions', 'backboneql.properties', 'backboneql.structures',
     ],
     install_requires=[
         'pydantic==1.*',
@@ -33,7 +32,7 @@ setup(
     long_description_content_type='text/markdown',
     entry_points={
         "console_scripts": [
-            'backboneql-cli = backboneql.cli:main'
+            'backboneql-cli = backboneql.cli:cli'
         ]
     },
     classifiers=[
