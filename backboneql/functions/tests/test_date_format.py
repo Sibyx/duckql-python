@@ -4,8 +4,8 @@ from backboneql.properties.property import Property
 
 def test_simple():
     my_function = DateFormat(
-        Property('users.created_at'),
-        '%Y-%m-%d %H:%i:%s',
+        property=Property(name='users.created_at'),
+        format='%Y-%m-%d %H:%i:%s',
         alias="formatted'_datetime"
     )
 

@@ -10,9 +10,7 @@ def cli():
 
 @cli.command()
 def schema():
-    print(Query.__pydantic_model__.schema_json(indent=2))
-    # query = Query('users')
-    # print(query.__pydantic_model__.schema_json(indent=2))
+    print(Query.schema_json(indent=2))
 
 
 if __name__ == '__main__':

@@ -5,8 +5,8 @@ from backboneql.structures.interval import Interval
 
 def test_simple():
     my_function = DateSub(
-        Property('users.created_at'),
-        Interval(5, Interval.Unit.DAY_MINUTE),
+        property=Property(name='users.created_at'),
+        interval=Interval(value=5, unit=Interval.Unit.DAY_MINUTE),
         alias="sub_dated"
     )
 

@@ -5,9 +5,9 @@ from backboneql.properties.property import Property
 
 def test_simple():
     my_function = ConvertTimezone(
-        property=Property('users.name'),
-        date_from=Constant('+00:00'),
-        date_to=Constant('Europe/Bratislava'),
+        property=Property(name='users.name'),
+        date_from=Constant(value='+00:00'),
+        date_to=Constant(value='Europe/Bratislava'),
         alias="'my_time"
     )
 

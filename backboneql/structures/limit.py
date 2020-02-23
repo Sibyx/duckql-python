@@ -1,9 +1,6 @@
-from pydantic.dataclasses import dataclass
-
 from backboneql.base import BaseType
 
 
-@dataclass
 class Limit(BaseType):
     limit: int
     offset: int = None

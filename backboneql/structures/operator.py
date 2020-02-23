@@ -1,9 +1,6 @@
 from enum import Enum
 from typing import List, Union
 
-from pydantic.dataclasses import dataclass
-
-from backboneql.exceptions import ParseError
 from backboneql.base import BaseType
 from backboneql.functions.base import BaseFunction
 from backboneql.properties.constant import Constant
@@ -12,7 +9,6 @@ from backboneql.properties.boolean import Boolean
 from .comparision import Comparision
 
 
-@dataclass
 class Operator(BaseType):
     class Operation(Enum):
         AND = 'and'
@@ -40,13 +36,6 @@ class Operator(BaseType):
     operation: Operation
     properties: List[Union[BaseFunction, Constant, Property, Boolean, Comparision]]
     alias: str = None
-
-    def __post_init__(self):
-        if self.alias is not None:
-            self.alias = self.escape(self.alias)
-
-        if any(map(lambda x: hasattr(x, 'alias') and x.alias is not None, self.properties)):
-            raise ParseError("You can't have alias inside of function!")
 
     def to_sql(self) -> str:
         sql = f' {self.operation} '.join(map(str, self.properties))

@@ -4,12 +4,26 @@ from backboneql.structures import Operator, Comparision
 
 def test_simple():
     my_operator = Operator(
-        Operator.Operation.AND,
-        [
-            Comparision([Property('users.age'), Constant(15)], Comparision.Operation.GREATER_EQUAL),
+        operation=Operator.Operation.AND,
+        properties=[
             Comparision(
-                [Property('users.city'), Array([Constant('Martin'), Constant('Bratislava')])],
-                Comparision.Operation.IN
+                properties=[
+                    Property(name='users.age'),
+                    Constant(value=15)
+                ],
+                operation=Comparision.Operation.GREATER_EQUAL
+            ),
+            Comparision(
+                properties=[
+                    Property(name='users.city'),
+                    Array(
+                        values=[
+                            Constant(value='Martin'),
+                            Constant(value='Bratislava')
+                        ]
+                    )
+                ],
+                operation=Comparision.Operation.IN
             )
         ]
     )

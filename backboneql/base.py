@@ -2,16 +2,33 @@ from abc import ABC, abstractmethod
 from enum import Enum
 from typing import List
 
-from pydantic.dataclasses import dataclass
+from pydantic import BaseModel, root_validator
+
+from backboneql.exceptions import ParseError
 
 
-@dataclass(init=False)
-class BaseType(ABC):
-
+class BaseType(BaseModel, ABC):
     class Dialect(Enum):
         POSTGRESQL = 'postgresql'
         MARIADB = 'mariadb'
         MYSQL = 'mysql'
+
+    @root_validator(pre=True)
+    def escape_alias(cls, values):
+        if 'alias' in values and values['alias'] is not None:
+            values['alias'] = cls.escape(values['alias'])
+        return values
+
+    @root_validator(pre=True)
+    def check_nested_aliases(cls, values):
+        if 'properties' in values:
+            if any(map(lambda x: hasattr(x, 'alias') and x.alias is not None, values['properties'])):
+                raise ParseError("You can't have alias inside of function!")
+
+        if 'property' in values and values['property'].alias is not None:
+            raise ParseError("You can't have alias inside of function!")
+
+        return values
 
     @abstractmethod
     def to_sql(self) -> str:
@@ -37,7 +54,7 @@ class BaseType(ABC):
         }
 
         if ignore:
-            # Removes ignored cahrds from insecure_chars dictionary
+            # Removes ignored chars from insecure_chars dictionary
             # https://stackoverflow.com/a/30351294/4458288
             list(map(insecure_chars.__delitem__, filter(insecure_chars.__contains__, ignore)))
 

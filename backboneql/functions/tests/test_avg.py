@@ -6,17 +6,17 @@ from backboneql.properties.property import Property
 
 
 def test_property():
-    my_avg = Avg(Property('users.name'))
+    my_avg = Avg(property=Property(name='users.name'))
 
     assert str(my_avg) == 'AVG(users.name)'
 
 
 def test_alias():
-    my_avg = Avg(Property('users.name'), alias='"avg_name')
+    my_avg = Avg(property=Property(name='users.name'), alias='"avg_name')
 
     assert str(my_avg) == 'AVG(users.name) AS avg_name'
 
 
 def test_parse_error():
     with pytest.raises(ParseError):
-        Avg(Property('users.name', alias='name'))
+        Avg(property=Property(name='users.name', alias='name'))

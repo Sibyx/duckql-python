@@ -15,4 +15,4 @@ def test_escape():
 
 def test_numeric():
     # TODO: decimal etc.
-    assert str(Constant(42)) == "42"
+    assert str(Constant(value=42)) == "42"

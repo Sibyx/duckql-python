@@ -1,9 +1,6 @@
-from pydantic.dataclasses import dataclass
-
 from backboneql.base import BaseType
 
 
-@dataclass
 class Boolean(BaseType):
     value: bool
 

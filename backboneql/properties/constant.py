@@ -1,17 +1,17 @@
 from decimal import Decimal
 from typing import Union
 
-from pydantic.dataclasses import dataclass
+from pydantic import validator
 
 from backboneql.base import BaseType
 
 
-@dataclass
 class Constant(BaseType):
     value: Union[str, int, float, Decimal]
 
-    def __post_init__(self):
-        self.value = self.escape(str(self.value))
+    @validator('value', pre=True)
+    def escape_value(cls, v):
+        return cls.escape(str(v))
 
     def to_sql(self) -> str:
         sql = f"{self.value}"

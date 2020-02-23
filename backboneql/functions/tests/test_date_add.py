@@ -5,8 +5,8 @@ from backboneql.structures.interval import Interval
 
 def test_simple():
     my_function = DateAdd(
-        Property('users.created_at'),
-        Interval(4, Interval.Unit.YEAR_MONTH),
+        property=Property(name='users.created_at'),
+        interval=Interval(value=4, unit=Interval.Unit.YEAR_MONTH),
         alias="add_dated"
     )
 

@@ -1,16 +1,12 @@
 from enum import Enum
 from typing import Union
 
-from pydantic.dataclasses import dataclass
-
-from backboneql.exceptions import ParseError
 from backboneql.functions.base import BaseFunction
 from backboneql.properties.constant import Constant
 from backboneql.properties.property import Property
 from backboneql.structures.interval import Interval
 
 
-@dataclass
 class Extract(BaseFunction):
     class Unit(Enum):
         CENTURY = 'century'
@@ -37,13 +33,6 @@ class Extract(BaseFunction):
     property: Union[Constant, Property, BaseFunction, Interval]
     unit: Unit
     alias: str = None
-
-    def __post_init__(self):
-        if hasattr(self, 'alias') and self.alias is not None:
-            self.alias = self.escape(self.alias)
-
-        if hasattr(self.property, 'alias') and self.property.alias is not None:
-            raise ParseError("You can't have alias inside of function!")
 
     def to_sql(self) -> str:
         sql = f"EXTRACT({self.unit.value.upper()} FROM {self.property})"

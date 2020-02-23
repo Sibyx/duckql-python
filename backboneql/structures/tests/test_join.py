@@ -4,22 +4,28 @@ from backboneql.structures import Join, Operator, Comparision
 
 def test_simple():
     my_join = Join(
-        'transactions',
-        Join.Type.LEFT,
-        Operator(
-            Operator.Operation.AND,
-            [
+        entity='transactions',
+        type=Join.Type.LEFT,
+        on=Operator(
+            operation=Operator.Operation.AND,
+            properties=[
                 Comparision(
-                    [Property('transactions.user_id'), Property('users.id')],
-                    Comparision.Operation.EQUAL
+                    properties=[
+                        Property(name='transactions.user_id'),
+                        Property(name='users.id')
+                    ],
+                    operation=Comparision.Operation.EQUAL
                 ),
                 Comparision(
-                    [Property('transactions.creator_id'), Property('users.id')],
-                    Comparision.Operation.NOT_EQUAL
+                    properties=[
+                        Property(name='transactions.creator_id'),
+                        Property(name='users.id')
+                    ],
+                    operation=Comparision.Operation.NOT_EQUAL
                 ),
             ]
         ),
-        "t"
+        alias="t"
     )
 
     sql = "LEFT JOIN transactions ON ((transactions.user_id = users.id) " \

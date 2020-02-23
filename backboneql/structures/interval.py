@@ -1,11 +1,8 @@
 from enum import Enum
 
-from pydantic.dataclasses import dataclass
-
 from backboneql.base import BaseType
 
 
-@dataclass
 class Interval(BaseType):
     class Unit(Enum):
         MICROSECOND = "microsecond"

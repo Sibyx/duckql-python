@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import Union, List
 
-from pydantic.dataclasses import dataclass
+from pydantic import validator
 
 from backboneql.exceptions import ParseError
 from backboneql.base import BaseType
@@ -13,7 +13,6 @@ from backboneql.properties.boolean import Boolean
 from backboneql.properties.null import Null
 
 
-@dataclass
 class Comparision(BaseType):
     class Operation(Enum):
         EQUAL = 'eq'
@@ -59,9 +58,12 @@ class Comparision(BaseType):
     properties: List[Union[Constant, Property, BaseFunction, Array, Boolean, Null]]
     operation: Operation
 
-    def __post__init(self):
-        if len(self.properties) != 2:
+    @validator('properties', pre=True)
+    def check_number_of_properties(cls, v):
+        if len(v) != 2:
             raise ParseError("Comparison requires exactly two attributes!")
+
+        return v
 
     def to_sql(self) -> str:
         sql = f"{self.properties[0]} {self.operation}"

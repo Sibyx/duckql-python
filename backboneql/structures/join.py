@@ -1,14 +1,13 @@
 from enum import Enum
 from typing import Union
 
-from pydantic.dataclasses import dataclass
+from pydantic import validator
 
 from backboneql.base import BaseType
 from .operator import Operator
 from .comparision import Comparision
 
 
-@dataclass
 class Join(BaseType):
     class Type(Enum):
         LEFT = 'left'
@@ -42,10 +41,9 @@ class Join(BaseType):
     on: Union[Comparision, Operator]
     alias: str = None
 
-    def __post_init__(self):
-        self.entity = self.escape(self.entity)
-        if self.alias is not None:
-            self.alias = self.escape(self.alias)
+    @validator('entity', pre=True)
+    def escape_entity(cls, v):
+        return cls.escape(v)
 
     def to_sql(self) -> str:
         sql = f"{self.type} JOIN {self.entity} ON {self.on}"
