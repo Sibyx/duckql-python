@@ -25,8 +25,14 @@ class BaseType(BaseModel, ABC):
             if any(map(lambda x: hasattr(x, 'alias') and x.alias is not None, values['properties'])):
                 raise ParseError("You can't have alias inside of function!")
 
-        if 'property' in values and values['property'].alias is not None:
-            raise ParseError("You can't have alias inside of function!")
+        # Absolutely ugly validation, I hate myself for this
+        if 'property' in values:
+            if isinstance(values['property'], dict):
+                if 'alias' in values['property'] and values['property']['alias'] is not None:
+                    raise ParseError("You can't have alias inside of function!")
+            else:
+                if values['property'].alias is not None:
+                    raise ParseError("You can't have alias inside of function!")
 
         return values
 

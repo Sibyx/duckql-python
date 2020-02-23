@@ -1,7 +1,20 @@
+import pytest
+
 from backboneql.properties import Null
 
 
-def test_simple():
-    my_type = Null()
+@pytest.fixture(scope="module")
+def valid_instance() -> Null:
+    return Null()
 
-    assert str(my_type) == 'NULL'
+
+def test_string(valid_instance: Null):
+    assert str(valid_instance) == 'NULL'
+
+
+def test_obj(valid_instance: Null):
+    assert valid_instance.obj == 'null'
+
+
+def test_json_parse(valid_instance: Null):
+    assert valid_instance.json() == '{"obj": "null"}'

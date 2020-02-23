@@ -82,6 +82,4 @@ def test_simple():
           "ORDER BY users.surname ASC, users.name DESC " \
           "LIMIT 10 OFFSET 4) AS my_query"
 
-    my_string = my_query.json()
-
     assert str(my_query) == sql

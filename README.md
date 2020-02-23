@@ -1,5 +1,8 @@
 # backboneQL
 
+Musis vyriesit json parser, pretoze ak mas type definiciu ako `List[BaseType]` tak mu zajebe a bude chciet vytvorit
+`ABC` classu. Kokot..
+
 ## TODO
 
 - [ ] Type object representation (e.g. `TIMESTAMP '2016-12-31 13:30:15'`)
