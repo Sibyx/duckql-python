@@ -21,7 +21,8 @@ setup(
     ],
     install_requires=[
         'pydantic==1.*',
-        'click==7.*'
+        'click==7.*',
+        'typing-extensions'
     ],
     url='https://gitlab.backbone.sk/backboneql/backboneql-python',
     license='MIT',
@@ -40,7 +41,6 @@ setup(
         'Development Status :: 2 - Pre-Alpha',
         'Environment :: Console',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
