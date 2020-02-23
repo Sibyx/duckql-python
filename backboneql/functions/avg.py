@@ -1,10 +1,13 @@
 from typing import Union
 
+from typing_extensions import Literal
+
 from .base import BaseFunction
 from backboneql.properties.property import Property
 
 
 class Avg(BaseFunction):
+    obj: Literal['avg'] = 'avg'
     property: Union[Property]
     alias: str = None
 

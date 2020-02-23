@@ -1,10 +1,13 @@
 from typing import Union
 
+from typing_extensions import Literal
+
 from backboneql.functions.base import BaseFunction
 from backboneql.properties.property import Property
 
 
 class Sum(BaseFunction):
+    obj: Literal['sum'] = 'sum'
     property: Union[Property, BaseFunction]
     alias: str = None
 

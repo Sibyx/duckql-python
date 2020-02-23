@@ -19,6 +19,7 @@ pipfile-requirements = "*"
 [packages]
 pydantic = "==1.*"
 click = "==7.*"
+typing-extensions = "*"
 
 [requires]
 python_version = "3.7"

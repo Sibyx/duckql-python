@@ -2,11 +2,13 @@ from decimal import Decimal
 from typing import Union
 
 from pydantic import validator
+from typing_extensions import Literal
 
 from backboneql.base import BaseType
 
 
 class Constant(BaseType):
+    obj: Literal['constant'] = 'constant'
     value: Union[str, int, float, Decimal]
 
     @validator('value', pre=True)

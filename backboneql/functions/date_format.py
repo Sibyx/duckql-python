@@ -1,6 +1,7 @@
 from typing import Union
 
 from pydantic import validator
+from typing_extensions import Literal
 
 from backboneql.functions.base import BaseFunction
 from backboneql.properties.property import Property
@@ -8,6 +9,7 @@ from backboneql.properties.constant import Constant
 
 
 class DateFormat(BaseFunction):
+    obj: Literal['date_format'] = 'date_format'
     property: Union[Property, Constant, BaseFunction]
     format: str
     alias: str = None

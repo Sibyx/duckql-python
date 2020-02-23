@@ -1,7 +1,7 @@
-from dataclasses import field
 from typing import List, Union
 
 from pydantic import validator
+from typing_extensions import Literal
 
 from backboneql.base import BaseType
 from backboneql.functions.base import BaseFunction
@@ -13,12 +13,16 @@ from .join import Join
 
 
 class Query(BaseType):
+    class Config:
+        title = 'query'
+
+    obj: Literal['query'] = 'query'
     entity: str
-    properties: List[BaseType] = field(default_factory=list)
-    joins: List[Join] = field(default_factory=list)
+    properties: List[BaseType]
+    joins: List[Join]
     conditions: Operator = None
-    order: List[Order] = field(default_factory=list)
-    group: List[Union[Property, BaseFunction]] = field(default_factory=list)
+    order: List[Order]
+    group: List[Union[Property, BaseFunction]]
     limit: Limit = None
     alias: str = None
 

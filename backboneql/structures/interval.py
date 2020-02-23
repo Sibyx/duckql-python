@@ -1,5 +1,7 @@
 from enum import Enum
 
+from typing_extensions import Literal
+
 from backboneql.base import BaseType
 
 
@@ -26,6 +28,7 @@ class Interval(BaseType):
         DAY_HOUR = "day_hour"
         YEAR_MONTH = "year_month"
 
+    obj: Literal['interval'] = 'interval'
     value: int
     unit: Unit
 

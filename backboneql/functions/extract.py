@@ -1,6 +1,8 @@
 from enum import Enum
 from typing import Union
 
+from typing_extensions import Literal
+
 from backboneql.functions.base import BaseFunction
 from backboneql.properties.constant import Constant
 from backboneql.properties.property import Property
@@ -30,6 +32,7 @@ class Extract(BaseFunction):
         WEEK = 'week'
         YEAR = 'year'
 
+    obj: Literal['extract'] = 'extract'
     property: Union[Constant, Property, BaseFunction, Interval]
     unit: Unit
     alias: str = None

@@ -1,7 +1,10 @@
+from typing_extensions import Literal
+
 from backboneql.base import BaseType
 
 
 class Limit(BaseType):
+    obj: Literal['limit'] = 'limit'
     limit: int
     offset: int = None
 

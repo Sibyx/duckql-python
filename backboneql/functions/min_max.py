@@ -1,10 +1,13 @@
 from typing import Union
 
+from typing_extensions import Literal
+
 from backboneql.functions.base import BaseFunction
 from backboneql.properties.property import Property
 
 
 class Max(BaseFunction):
+    obj: Literal['max'] = 'max'
     property: Union[Property, BaseFunction]
     alias: str = None
 
@@ -18,6 +21,7 @@ class Max(BaseFunction):
 
 
 class Min(BaseFunction):
+    obj: Literal['min'] = 'min'
     property: Union[Property, BaseFunction]
     alias: str = None
 

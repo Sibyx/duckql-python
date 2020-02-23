@@ -1,6 +1,8 @@
 from enum import Enum
 from typing import List, Union
 
+from typing_extensions import Literal
+
 from backboneql.base import BaseType
 from backboneql.functions.base import BaseFunction
 from backboneql.properties.constant import Constant
@@ -33,6 +35,7 @@ class Operator(BaseType):
             except KeyError:
                 raise ValueError(f"{self.value} doesnt have valid string representation specified!")
 
+    obj: Literal['operator'] = 'operator'
     operation: Operation
     properties: List[Union[BaseFunction, Constant, Property, Boolean, Comparision]]
     alias: str = None

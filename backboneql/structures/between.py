@@ -1,6 +1,7 @@
 from typing import Union, List
 
 from pydantic import validator
+from typing_extensions import Literal
 
 from backboneql.exceptions import ParseError
 from backboneql.base import BaseType
@@ -10,6 +11,7 @@ from backboneql.properties.constant import Constant
 
 
 class Between(BaseType):
+    obj: Literal['between'] = 'between'
     property: Union[BaseFunction, Property, Constant]
     values: List[Union[BaseFunction, Constant, Property]]
 

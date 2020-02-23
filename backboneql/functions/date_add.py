@@ -1,5 +1,7 @@
 from typing import Union
 
+from typing_extensions import Literal
+
 from backboneql.base import BaseType
 from backboneql.functions.base import BaseFunction
 from backboneql.properties.constant import Constant
@@ -8,6 +10,7 @@ from backboneql.structures.interval import Interval
 
 
 class DateAdd(BaseType):
+    obj: Literal['date_add'] = 'date_add'
     property: Union[Constant, Property, BaseFunction]
     interval: Interval
     alias: str = None

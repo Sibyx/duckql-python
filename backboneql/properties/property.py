@@ -1,9 +1,11 @@
 from pydantic import validator
+from typing_extensions import Literal
 
 from backboneql.base import BaseType
 
 
 class Property(BaseType):
+    obj: Literal['property'] = 'property'
     name: str
     alias: str = None
 
