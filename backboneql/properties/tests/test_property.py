@@ -24,7 +24,9 @@ def test_json_parse(valid_instance: Property):
 
 
 def test_json_serialize(valid_instance: Property):
-    assert valid_instance == Property.parse_raw('{"obj": "properties.Property", "name": "users.name", "alias": "name"}')
+    assert valid_instance == Property.parse_raw(
+        '{"obj": "properties.Property", "name": "users.name", "alias": "name"}'
+    )
 
 
 def test_escape():
