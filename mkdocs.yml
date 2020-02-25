@@ -7,9 +7,23 @@ site_url: 'https://gitlab.backbone.sk/backboneql/backboneql-python'
 # Navigation
 nav:
   - Home: index.md
-  - Functions: functions.md
   - Properties: properties.md
   - Structures: structures.md
+  - Functions:
+      - 'Avg': functions/avg.md
+      - 'Concat': functions/concat.md
+      - 'ConvertTimezone': functions/convert_timezone.md
+      - 'Count': functions/count.md
+      - 'CurrentDate': functions/current_date.md
+      - 'DateAdd': functions/date_add.md
+      - 'DateFormat': functions/date_format.md
+      - 'DateSub': functions/date_sub.md
+      - 'Extract': functions/extract.md
+      - 'GroupConcat': functions/group_concat.md
+      - 'Max': functions/max.md
+      - 'Min': functions/min.md
+      - 'Sum': functions/sum.md
+      - 'Weekday': functions/weekday.md
 
 # Repository
 repo_name: 'backboneql/backboneql-python'
