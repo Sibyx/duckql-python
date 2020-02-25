@@ -1,10 +1,10 @@
 from typing_extensions import Literal
 
-from backboneql.functions.base import BaseFunction
+from ..functions.base import BaseFunction
 
 
 class CurrentDate(BaseFunction):
-    obj: Literal['current_date'] = 'current_date'
+    obj: Literal['functions.CurrentDate'] = 'functions.CurrentDate'
     alias: str = None
 
     def to_sql(self) -> str:

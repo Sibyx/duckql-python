@@ -4,7 +4,7 @@ from typing import Union
 from pydantic import validator
 from typing_extensions import Literal
 
-from backboneql.base import BaseType
+from ..base import BaseType
 from .operator import Operator
 from .comparision import Comparision
 
@@ -37,7 +37,7 @@ class Join(BaseType):
             except KeyError:
                 raise ValueError(f"{self.value} doesnt have valid string representation specified!")
 
-    obj: Literal['join'] = 'join'
+    obj: Literal['structures.Join'] = 'structures.Join'
     entity: str
     type: Type
     on: Union[Comparision, Operator]

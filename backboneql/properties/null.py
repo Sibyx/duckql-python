@@ -1,10 +1,10 @@
 from typing_extensions import Literal
 
-from backboneql.base import BaseType
+from ..base import BaseType
 
 
 class Null(BaseType):
-    obj: Literal['null'] = 'null'
+    obj: Literal['properties.Null'] = 'properties.Null'
 
     def to_sql(self) -> str:
         return 'NULL'

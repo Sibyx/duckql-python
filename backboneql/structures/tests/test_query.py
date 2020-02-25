@@ -83,3 +83,9 @@ def test_simple():
           "LIMIT 10 OFFSET 4) AS my_query"
 
     assert str(my_query) == sql
+
+    json_string = my_query.json()
+    clone = Query.parse_raw(json_string)
+
+    assert clone == my_query
+    assert str(clone) == sql

@@ -1,0 +1,159 @@
+{
+  "obj": "query",
+  "entity": "users",
+  "properties": [
+    {
+      "obj": "property",
+      "name": "users.name",
+      "alias": null
+    },
+    {
+      "obj": "convert_timezone",
+      "property": {
+        "obj": "property",
+        "name": "users.created_at",
+        "alias": null
+      },
+      "date_from": {
+        "obj": "constant",
+        "value": "+00:00"
+      },
+      "date_to": {
+        "obj": "constant",
+        "value": "Europe/Bratislava"
+      },
+      "alias": null
+    }
+  ],
+  "joins": [
+    {
+      "obj": "join",
+      "entity": "transactions",
+      "type": "left",
+      "on": {
+        "obj": "operator",
+        "operation": "and",
+        "properties": [
+          {
+            "obj": "comparision",
+            "properties": [
+              {
+                "obj": "property",
+                "name": "transactions.user_id",
+                "alias": null
+              },
+              {
+                "obj": "property",
+                "name": "users.id",
+                "alias": null
+              }
+            ],
+            "operation": "eq"
+          },
+          {
+            "obj": "comparision",
+            "properties": [
+              {
+                "obj": "property",
+                "name": "transactions.creator_id",
+                "alias": null
+              },
+              {
+                "obj": "property",
+                "name": "users.id",
+                "alias": null
+              }
+            ],
+            "operation": "neq"
+          }
+        ],
+        "alias": null
+      },
+      "alias": null
+    }
+  ],
+  "conditions": {
+    "obj": "operator",
+    "operation": "and",
+    "properties": [
+      {
+        "obj": "comparision",
+        "properties": [
+          {
+            "obj": "property",
+            "name": "users.age",
+            "alias": null
+          },
+          {
+            "obj": "constant",
+            "value": "15"
+          }
+        ],
+        "operation": "gte"
+      },
+      {
+        "obj": "comparision",
+        "properties": [
+          {
+            "obj": "property",
+            "name": "users.city",
+            "alias": null
+          },
+          {
+            "obj": "array",
+            "values": [
+              {
+                "obj": "constant",
+                "value": "Martin"
+              },
+              {
+                "obj": "constant",
+                "value": "Bratislava"
+              }
+            ]
+          }
+        ],
+        "operation": "in"
+      }
+    ],
+    "alias": null
+  },
+  "order": [
+    {
+      "obj": "order",
+      "property": {
+        "obj": "property",
+        "name": "users.surname",
+        "alias": null
+      },
+      "kind": "ASC"
+    },
+    {
+      "obj": "order",
+      "property": {
+        "obj": "property",
+        "name": "users.name",
+        "alias": null
+      },
+      "kind": "DESC"
+    }
+  ],
+  "group": [
+    {
+      "obj": "property",
+      "name": "users.email",
+      "alias": null
+    },
+    {
+      "obj": "property",
+      "name": "users.id",
+      "alias": null
+    }
+  ],
+  "limit": {
+    "obj": "limit",
+    "limit": 10,
+    "offset": 4
+  },
+  "alias": "my_query"
+}

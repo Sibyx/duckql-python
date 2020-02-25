@@ -13,8 +13,9 @@ def test_string(valid_instance: Null):
 
 
 def test_obj(valid_instance: Null):
-    assert valid_instance.obj == 'null'
+    assert valid_instance.obj == 'properties.Null'
 
 
 def test_json_parse(valid_instance: Null):
-    assert valid_instance.json() == '{"obj": "null"}'
+    print(valid_instance.json())
+    assert valid_instance.json() == '{"obj": "properties.Null"}'

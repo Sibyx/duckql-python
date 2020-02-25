@@ -1,3 +1,4 @@
+import json
 from abc import ABC, abstractmethod
 from enum import Enum
 from typing import List
@@ -5,6 +6,7 @@ from typing import List
 from pydantic import BaseModel, root_validator
 
 from backboneql.exceptions import ParseError
+from backboneql.utils import json_parse
 
 
 class BaseType(BaseModel, ABC):
@@ -12,6 +14,10 @@ class BaseType(BaseModel, ABC):
         POSTGRESQL = 'postgresql'
         MARIADB = 'mariadb'
         MYSQL = 'mysql'
+
+    class Config:
+        json_loads = json_parse
+        json_dumps = json.dumps
 
     @root_validator(pre=True)
     def escape_alias(cls, values):

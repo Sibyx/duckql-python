@@ -26,5 +26,5 @@ __all__ = [
     "Max",
     "Min",
     "Sum",
-    "Weekday"
+    "Weekday",
 ]

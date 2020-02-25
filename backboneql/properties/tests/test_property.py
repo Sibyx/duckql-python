@@ -16,15 +16,15 @@ def test_string(valid_instance: Property):
 
 
 def test_obj(valid_instance: Property):
-    assert valid_instance.obj == 'property'
+    assert valid_instance.obj == 'properties.Property'
 
 
 def test_json_parse(valid_instance: Property):
-    assert valid_instance.json() == '{"obj": "property", "name": "users.name", "alias": "name"}'
+    assert valid_instance.json() == '{"obj": "properties.Property", "name": "users.name", "alias": "name"}'
 
 
 def test_json_serialize(valid_instance: Property):
-    assert valid_instance == Property.parse_raw('{"obj": "property", "name": "users.name", "alias": "name"}')
+    assert valid_instance == Property.parse_raw('{"obj": "properties.Property", "name": "users.name", "alias": "name"}')
 
 
 def test_escape():
@@ -34,4 +34,4 @@ def test_escape():
     )
 
     assert str(my_property) == 'users.name AS "name"'
-    assert my_property.json() == '{"obj": "property", "name": "users.name", "alias": "name"}'
+    assert my_property.json() == '{"obj": "properties.Property", "name": "users.name", "alias": "name"}'

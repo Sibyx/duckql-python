@@ -4,11 +4,11 @@ from typing import Union
 from pydantic import validator
 from typing_extensions import Literal
 
-from backboneql.base import BaseType
+from ..base import BaseType
 
 
 class Constant(BaseType):
-    obj: Literal['constant'] = 'constant'
+    obj: Literal['properties.Constant'] = 'properties.Constant'
     value: Union[str, int, float, Decimal]
 
     @validator('value', pre=True)

@@ -2,13 +2,13 @@ from typing import Union
 
 from typing_extensions import Literal
 
-from backboneql.functions.base import BaseFunction
-from backboneql.properties.constant import Constant
-from backboneql.properties.property import Property
+from ..functions.base import BaseFunction
+from ..properties.constant import Constant
+from ..properties.property import Property
 
 
 class ConvertTimezone(BaseFunction):
-    obj: Literal['convert_timezone'] = 'convert_timezone'
+    obj: Literal['functions.ConvertTimezone'] = 'functions.ConvertTimezone'
     property: Union[Property, BaseFunction, Constant]
     date_from: Constant
     date_to: Constant

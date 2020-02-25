@@ -2,12 +2,12 @@ from typing import List
 
 from typing_extensions import Literal
 
-from backboneql.base import BaseType
-from backboneql.properties.constant import Constant
+from ..base import BaseType
+from ..properties.constant import Constant
 
 
 class Array(BaseType):
-    obj: Literal['array'] = 'array'
+    obj: Literal['properties.Array'] = 'properties.Array'
     values: List[Constant]
 
     def to_sql(self) -> str:

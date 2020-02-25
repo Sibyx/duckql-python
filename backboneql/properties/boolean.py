@@ -1,10 +1,10 @@
 from typing_extensions import Literal
 
-from backboneql.base import BaseType
+from ..base import BaseType
 
 
 class Boolean(BaseType):
-    obj: Literal['boolean'] = 'boolean'
+    obj: Literal['properties.Boolean'] = 'properties.Boolean'
     value: bool
 
     def to_sql(self) -> str:

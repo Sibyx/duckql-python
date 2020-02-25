@@ -2,13 +2,13 @@ from typing import Union
 
 from typing_extensions import Literal
 
-from backboneql.functions.base import BaseFunction
-from backboneql.properties.property import Property
-from backboneql.properties.constant import Constant
+from ..functions.base import BaseFunction
+from ..properties.property import Property
+from ..properties.constant import Constant
 
 
 class Weekday(BaseFunction):
-    obj: Literal['weekday'] = 'weekday'
+    obj: Literal['functions.Weekday'] = 'functions.Weekday'
     property: Union[Property, BaseFunction, Constant]
     alias: str = None
 

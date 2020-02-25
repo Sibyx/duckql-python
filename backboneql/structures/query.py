@@ -1,11 +1,12 @@
 from typing import List, Union
 
+from ..functions.base import BaseFunction
 from pydantic import validator
 from typing_extensions import Literal
 
-from backboneql.base import BaseType
-from backboneql.functions.base import BaseFunction
-from backboneql.properties.property import Property
+from ..base import BaseType
+from ..properties.property import Property
+from .distinct import Distinct
 from .operator import Operator
 from .order import Order
 from .limit import Limit
@@ -14,11 +15,11 @@ from .join import Join
 
 class Query(BaseType):
     class Config:
-        title = 'query'
+        title = 'Query'
 
-    obj: Literal['query'] = 'query'
+    obj: Literal['structures.Query'] = 'structures.Query'
     entity: str
-    properties: List[BaseType]
+    properties: List[Union[BaseFunction, Property, Distinct]]
     joins: List[Join]
     conditions: Operator = None
     order: List[Order]

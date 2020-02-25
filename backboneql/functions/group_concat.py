@@ -2,13 +2,13 @@ from typing import Union
 
 from typing_extensions import Literal
 
-from backboneql.functions.base import BaseFunction
-from backboneql.properties.constant import Constant
-from backboneql.properties.property import Property
+from ..functions.base import BaseFunction
+from ..properties.constant import Constant
+from ..properties.property import Property
 
 
 class GroupConcat(BaseFunction):
-    obj: Literal['group_concat'] = 'group_concat'
+    obj: Literal['functions.GroupConcat'] = 'functions.GroupConcat'
     property: Union[Constant, Property, BaseFunction]
     alias: str = None
 

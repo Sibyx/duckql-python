@@ -2,15 +2,14 @@ from typing import Union
 
 from typing_extensions import Literal
 
-from backboneql.base import BaseType
-from backboneql.functions.base import BaseFunction
-from backboneql.properties.constant import Constant
-from backboneql.properties.property import Property
-from backboneql.structures.interval import Interval
+from ..functions.base import BaseFunction
+from ..properties.constant import Constant
+from ..properties.property import Property
+from ..structures.interval import Interval
 
 
-class DateSub(BaseType):
-    obj: Literal['date_sub'] = 'date_sub'
+class DateSub(BaseFunction):
+    obj: Literal['functions.DateSub'] = 'functions.DateSub'
     property: Union[Constant, Property, BaseFunction]
     interval: Interval
     alias: str = None

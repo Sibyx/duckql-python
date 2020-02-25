@@ -1,12 +1,12 @@
 from enum import Enum
 from typing import Union, List
 
+from backboneql.functions.base import BaseFunction
 from pydantic import validator
 from typing_extensions import Literal
 
 from backboneql.exceptions import ParseError
 from backboneql.base import BaseType
-from backboneql.functions.base import BaseFunction
 from backboneql.properties.constant import Constant
 from backboneql.properties.property import Property
 from backboneql.properties.array import Array
@@ -56,7 +56,7 @@ class Comparision(BaseType):
         def containers(cls) -> List["Comparision.Operation"]:
             return [cls.NOT_IN, cls.IN]
 
-    obj: Literal['comparision'] = 'comparision'
+    obj: Literal['structures.Comparision'] = 'structures.Comparision'
     properties: List[Union[Constant, Property, BaseFunction, Array, Boolean, Null]]
     operation: Operation
 
