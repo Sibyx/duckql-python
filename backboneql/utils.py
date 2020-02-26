@@ -1,6 +1,8 @@
 import importlib
 import json
 
+from backboneql.exceptions import ParseError
+
 
 def custom_parser(data: dict):
     obj = data
@@ -8,9 +10,13 @@ def custom_parser(data: dict):
     if 'obj' in data:
         bits = data.pop('obj').split('.')
 
-        class_name = bits[1]
+        try:
+            module_name = f"backboneql.{bits[0]}"
+            class_name = bits[1]
+        except IndexError:
+            raise ParseError("Invalid object!")
 
-        module_ = importlib.import_module(f"backboneql.{bits[0]}")
+        module_ = importlib.import_module(module_name)
         class_ = getattr(module_, class_name)
 
         obj = class_(**data)

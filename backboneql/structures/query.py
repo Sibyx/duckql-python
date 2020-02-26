@@ -20,10 +20,10 @@ class Query(BaseType):
     obj: Literal['structures.Query'] = 'structures.Query'
     entity: str
     properties: List[Union[BaseFunction, Property, Distinct]]
-    joins: List[Join]
+    joins: List[Join] = []
     conditions: Operator = None
-    order: List[Order]
-    group: List[Union[Property, BaseFunction]]
+    order: List[Order] = []
+    group: List[Union[Property, BaseFunction]] = []
     limit: Limit = None
     alias: str = None
 
