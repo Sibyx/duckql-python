@@ -11,6 +11,12 @@ class Constant(BaseType):
     obj: Literal['properties.Constant'] = 'properties.Constant'
     value: Union[str, int, float, Decimal]
 
+    class Config:
+        title = "Constant"
+        schema_extra = {
+            'description': "Object representation of alphanumeric constant"
+        }
+
     @validator('value', pre=True)
     def escape_value(cls, v):
         return cls.escape(str(v))

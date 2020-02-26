@@ -7,7 +7,12 @@ site_url: 'https://gitlab.backbone.sk/backboneql/backboneql-python'
 # Navigation
 nav:
   - Home: index.md
-  - Properties: properties.md
+  - Properties:
+      - 'Property': properties/property.md
+      - 'Constant': properties/constant.md
+      - 'Array': properties/array.md
+      - 'Boolean': properties/boolean.md
+      - 'Null': properties/null.md
   - Structures: structures.md
   - Functions:
       - 'Avg': functions/avg.md

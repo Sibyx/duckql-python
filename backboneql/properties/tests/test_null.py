@@ -17,5 +17,4 @@ def test_obj(valid_instance: Null):
 
 
 def test_json_parse(valid_instance: Null):
-    print(valid_instance.json())
     assert valid_instance.json() == '{"obj": "properties.Null"}'

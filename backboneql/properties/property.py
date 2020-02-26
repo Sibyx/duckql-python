@@ -9,6 +9,12 @@ class Property(BaseType):
     name: str
     alias: str = None
 
+    class Config:
+        title = "Property"
+        schema_extra = {
+            'description': "Object representation of SQL column/property"
+        }
+
     @validator('name', pre=True)
     def escape_name(cls, v):
         return cls.escape(v)
