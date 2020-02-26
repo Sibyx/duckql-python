@@ -1,5 +1,6 @@
 stages:
   - test
+  - publish
 
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
@@ -26,3 +27,16 @@ test:
     - pytest . -v
     - pytest . --flake8 -v
     - pytest . --cov=backboneql
+
+publish:
+  stage: publish
+  only:
+    refs:
+      - tags
+  script:
+    - python setup.py sdist bdist_wheel
+    - twine upload --repository-url https://pypi.backbone.sk dist/*
+  artifacts:
+    name: "backboneql-$CI_COMMIT_TAG"
+    paths:
+      - dist/

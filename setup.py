@@ -14,7 +14,7 @@ with open('./backboneql/__init__.py') as f:
     exec(f.read(), meta)
 
 setup(
-    name='backboneql_python',
+    name='backboneql',
     version=meta['__version__'],
     packages=[
         'backboneql', 'backboneql.functions', 'backboneql.properties', 'backboneql.structures',
@@ -26,7 +26,7 @@ setup(
     ],
     url='https://gitlab.backbone.sk/backboneql/backboneql-python',
     license='MIT',
-    author='Jakub Dubbec',
+    author='Jakub Dubec',
     author_email='jakub.dubec@gmail.com',
     description='JSON declarative SQL conversion library',
     long_description=read_files(['README.md', 'CHANGELOG.md']),

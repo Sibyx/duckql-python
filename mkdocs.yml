@@ -13,7 +13,8 @@ nav:
       - 'Array': properties/array.md
       - 'Boolean': properties/boolean.md
       - 'Null': properties/null.md
-  - Structures: structures.md
+  - Structures:
+      - 'Between': structures/between.md
   - Functions:
       - 'Avg': functions/avg.md
       - 'Concat': functions/concat.md
