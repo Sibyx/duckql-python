@@ -13,7 +13,7 @@ generate documentation you need to follow these simple steps:
 - `mkdocs build`
 
 Documentation should be in `site` directory. You can also download documentation for each release from
-[GitLab]()
+[GitLab](https://gitlab.backbone.sk/backboneql/backboneql-python/tags).
 
 ---
 Made with ☕️ and ❤️ by Jakub Dubec & [BACKBONE s.r.o.](https://www.backbone.sk/en/)
