@@ -19,6 +19,7 @@ class Join(BaseType):
         FULL_OUTER = 'full_outer'
         LEFT_OUTER = 'left_outer'
         RIGHT_OUTER = 'right_outer'
+        NATURAL = 'natural'
 
         def __str__(self):
             mapping = {
@@ -29,7 +30,8 @@ class Join(BaseType):
                 self.CROSS: 'CROSS',
                 self.FULL_OUTER: 'FULL OUTER',
                 self.LEFT_OUTER: 'LEFT OUTER',
-                self.RIGHT_OUTER: 'RIGHT OUTER'
+                self.RIGHT_OUTER: 'RIGHT OUTER',
+                self.NATURAL: 'NATURAL'
             }
 
             try:
@@ -40,7 +42,7 @@ class Join(BaseType):
     obj: Literal['structures.Join'] = 'structures.Join'
     entity: str
     type: Type
-    on: Union[Comparision, Operator]
+    on: Union[Comparision, Operator] = []
     alias: str = None
 
     @validator('entity', pre=True)
@@ -48,7 +50,10 @@ class Join(BaseType):
         return cls.escape(v)
 
     def to_sql(self) -> str:
-        sql = f"{self.type} JOIN {self.entity} ON {self.on}"
+        sql = f"{self.type} JOIN {self.entity}"
+
+        if self.type != self.Type.NATURAL:
+            sql = f"{sql} ON {self.on}"
 
         if self.alias is not None:
             sql = f"{sql} AS {self.alias}"

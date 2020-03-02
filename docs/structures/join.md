@@ -14,7 +14,7 @@
 |-----------------|----------------------------------------------------------------------------------------|----------|
 | obj             | `structures.Join`                                                                      | True     |
 | entity          | String                                                                                 | True     |
-| type            | Enum[`left` `right` `inner` `outer` `cross` `full_outer` `left_outer` `right_outer`]   | True     |
+| type            | Enum[`left` `right` `inner` `outer` `cross` `full_outer` `left_outer` `right_outer` `natural`]   | True     |
 | on              | `Comparision` `Operator`                                                               | True     |
 | alias           | String                                                                                 | False    |
 

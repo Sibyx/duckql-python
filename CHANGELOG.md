@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.3 : 03.02.2020
+
+- **Feature**: Natural join support
+
 ## 0.1.2 : 03.02.2020
 
 - **Change**: Completed docs

@@ -31,3 +31,13 @@ def test_simple():
     sql = "LEFT JOIN transactions ON ((transactions.user_id = users.id) " \
           "AND (transactions.creator_id != users.id)) AS t"
     assert str(my_join) == sql
+
+
+def test_natural():
+    my_join = Join(
+        entity='transactions',
+        type=Join.Type.NATURAL
+    )
+
+    sql = "NATURAL JOIN transactions"
+    assert str(my_join) == sql
