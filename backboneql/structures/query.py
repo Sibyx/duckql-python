@@ -53,3 +53,35 @@ class Query(BaseType):
             sql = f"({sql}) AS {self.alias}"
 
         return sql
+
+    def _extract_properties(self, item: BaseType) -> List[Property]:
+        if isinstance(item, Property):
+            return [item]
+        elif isinstance(item, list):
+            my_properties = []
+            for i in item:
+                my_properties.extend(self._extract_properties(i))
+            return my_properties
+        elif hasattr(item, 'property'):
+            return self._extract_properties(getattr(item, 'property', []))
+        elif hasattr(item, 'properties'):
+            return self._extract_properties(getattr(item, 'properties', []))
+        else:
+            return []
+
+    @property
+    def nested_properties(self) -> List[Property]:
+        my_properties = []
+
+        for item in self.properties:
+            my_properties.extend(self._extract_properties(item))
+
+        my_properties.extend(self._extract_properties(self.conditions))
+
+        for item in self.order:
+            my_properties.extend(self._extract_properties(item))
+
+        for item in self.group:
+            my_properties.extend(self._extract_properties(item))
+
+        return my_properties

@@ -1,17 +1,8 @@
-# Welcome to MkDocs
+# Welcome to backboneQL library
 
-For full documentation visit [mkdocs.org](https://mkdocs.org).
+[![pipeline status](https://dev01.backbone.sk/backboneql/backboneql-python/badges/master/pipeline.svg)](https://dev01.backbone.sk/backboneql/backboneql-python/commits/master)
+[![coverage report](https://dev01.backbone.sk/backboneql/backboneql-python/badges/master/coverage.svg)](https://dev01.backbone.sk/backboneql/backboneql-python/commits/master)
 
-## Commands
+backboneQL is simple library which converts JSON-based object to raw SQL in different SQL dialects.
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs help` - Print this help message.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+Follow links in right navigation menu to get closer with syntax.
