@@ -1,12 +1,14 @@
 # Array
 
+## Basic information
+
 |                 |                                |
 |-----------------|--------------------------------|
 | **Object type** | `properties.Array`             |
 | **Since**       | 0.1.0                          |
 | **Dialects**    | `MySQL` `MariaDB` `PostgreSQL` |
 
-**JSON format**
+## JSON format
 
 ```json
 {
@@ -32,12 +34,12 @@
 }
 ```
 
-**SQL**
+## SQL
 
 ```sql
 ('Arthur Dent', 'Deep Thought', 'Tricia Marie McMillan', 'Questular Rontok')
 ```
 
-**SQL reference**
+## SQL reference
 
 - [PostgreSQL](https://www.postgresql.org/docs/current/arrays.html)

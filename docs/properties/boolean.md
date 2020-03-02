@@ -1,12 +1,14 @@
 # Boolean
 
+## Basic information
+
 |                 |                                |
 |-----------------|--------------------------------|
 | **Object type** | `properties.Boolean`           |
 | **Since**       | 0.1.0                          |
 | **Dialects**    | `MySQL` `MariaDB` `PostgreSQL` |
 
-**JSON format**
+## JSON format
 
 ```json
 {
@@ -15,13 +17,13 @@
 }
 ```
 
-**SQL**
+## SQL
 
 ```sql
 FALSE
 ```
 
-**SQL reference**
+## SQL reference
 
 - [PostgreSQL](https://www.postgresql.org/docs/current/datatype-boolean.html)
 - [MySQL](https://dev.mysql.com/doc/refman/8.0/en/boolean-literals.html)

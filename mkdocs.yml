@@ -15,6 +15,14 @@ nav:
       - 'Null': properties/null.md
   - Structures:
       - 'Between': structures/between.md
+      - 'Comparision': structures/comparision.md
+      - 'Distinct': structures/distinct.md
+      - 'Interval': structures/interval.md
+      - 'Join': structures/join.md
+      - 'Limit': structures/limit.md
+      - 'Operator': structures/operator.md
+      - 'Order': structures/order.md
+      - 'Query': structures/query.md
   - Functions:
       - 'Avg': functions/avg.md
       - 'Concat': functions/concat.md

@@ -1,0 +1,14 @@
+{
+  "obj": "structures.Query",
+  "entity": "auth_user",
+  "properties": [
+    {
+      "obj": "properties.Property",
+      "name": "auth_user.name"
+    },
+    {
+      "obj": "properties.Property",
+      "name": "auth_user.surname"
+    }
+  ]
+}

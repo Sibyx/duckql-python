@@ -8,7 +8,7 @@ from ..properties.property import Property
 
 class Avg(BaseFunction):
     obj: Literal['functions.Avg'] = 'functions.Avg'
-    property: Union[Property]
+    property: Property
     alias: str = None
 
     def to_sql(self) -> str:
