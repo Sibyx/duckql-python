@@ -8,6 +8,7 @@ from ..base import BaseType
 from ..properties.property import Property
 from .distinct import Distinct
 from .operator import Operator
+from .comparision import Comparision
 from .order import Order
 from .limit import Limit
 from .join import Join
@@ -21,7 +22,7 @@ class Query(BaseType):
     entity: str
     properties: List[Union[BaseFunction, Property, Distinct]]
     joins: List[Join] = []
-    conditions: Operator = None
+    conditions: Union[Operator, Comparision] = None
     order: List[Order] = []
     group: List[Union[Property, BaseFunction]] = []
     limit: Limit = None

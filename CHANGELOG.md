@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.5 : 05.02.2020
+
+- **Change**: Allow direct use of `structures.Comparision` in query conditions
+
 ## 0.1.4 : 05.02.2020
 
 - **Fix**: Allow aliases in `structures.Query`
