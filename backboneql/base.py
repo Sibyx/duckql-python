@@ -27,7 +27,8 @@ class BaseType(BaseModel, ABC):
 
     @root_validator(pre=True)
     def check_nested_aliases(cls, values):
-        if 'properties' in values:
+        if 'properties' in values and str(cls) != "<class 'backboneql.structures.query.Query'>":
+
             if any(map(lambda x: hasattr(x, 'alias') and x.alias is not None, values['properties'])):
                 raise ParseError("You can't have alias inside of function!")
 
@@ -61,7 +62,6 @@ class BaseType(BaseModel, ABC):
             "\"": "",
             "'": "",
             "\\": "\\\\",
-            "%": "\\%",
             ';': '',
         }
 

@@ -7,11 +7,12 @@ def test_simple():
     my_query = Query(
         entity='users',
         properties=[
-            Property(name='users.name'),
+            Property(name='users.name', alias='users_name'),
             ConvertTimezone(
                 property=Property(name='users.created_at'),
                 date_from=Constant(value='+00:00'),
                 date_to=Constant(value='Europe/Bratislava'),
+                alias='valid_timezone'
             )
         ],
         joins=[
@@ -75,7 +76,8 @@ def test_simple():
         alias="my_query"
     )
 
-    sql = "(SELECT users.name, CONVERT_TZ(users.created_at, '+00:00', 'Europe/Bratislava') FROM users " \
+    sql = "(SELECT users.name AS \"users_name\", CONVERT_TZ(users.created_at, '+00:00', 'Europe/Bratislava') " \
+          "AS valid_timezone FROM users " \
           "LEFT JOIN transactions ON ((transactions.user_id = users.id) AND (transactions.creator_id != users.id)) " \
           "WHERE ((users.age >= 15) AND (users.city IN ('Martin', 'Bratislava'))) " \
           "GROUP BY users.email, users.id " \
