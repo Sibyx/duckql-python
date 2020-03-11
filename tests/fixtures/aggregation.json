@@ -1,0 +1,25 @@
+{
+  "obj": "structures.Query",
+  "entity": "donations",
+  "properties": [
+    {
+      "obj": "functions.Max",
+      "property": {
+        "obj": "properties.Property",
+        "name": "donations.value"
+      },
+      "alias": "donations_value"
+    },
+    {
+      "obj": "properties.Property",
+      "name": "donations.status",
+      "alias": "donations_status"
+    }
+  ],
+  "group": [
+    {
+      "obj": "properties.Property",
+      "name": "donations.status"
+    }
+  ]
+}

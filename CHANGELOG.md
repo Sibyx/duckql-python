@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.6 : 11.03.2020
+
+- **Feature**: CLI for parsing files
+
 ## 0.1.5 : 05.02.2020
 
 - **Change**: Allow direct use of `structures.Comparision` in query conditions
