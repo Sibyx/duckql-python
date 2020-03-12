@@ -13,7 +13,7 @@
 | Attribute       | Accepts                                                  | Required |
 |-----------------|----------------------------------------------------------|----------|
 | obj             | `functions.Concat`                                       | True     |
-| property        | List[`functions.*` `Property` `Constant`]                | True     |
+| properties      | List[`functions.*` `Property` `Constant`]                | True     |
 | alias           | String                                                   | False    |
 
 ## JSON format
