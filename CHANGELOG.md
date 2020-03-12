@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.7 : 12.03.2020
+
+- **Feature**: Introduced `functions.StringAgg`
+- **Feature**: Introduced `structures.CastOperator`
+
 ## 0.1.6 : 11.03.2020
 
 - **Feature**: CLI for parsing files
