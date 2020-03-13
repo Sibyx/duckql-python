@@ -6,6 +6,7 @@ from typing_extensions import Literal
 from ..functions.base import BaseFunction
 from ..properties.constant import Constant
 from ..properties.property import Property
+from ..structures.cast_operator import CastOperator
 from ..structures.interval import Interval
 
 
@@ -33,7 +34,7 @@ class Extract(BaseFunction):
         YEAR = 'year'
 
     obj: Literal['functions.Extract'] = 'functions.Extract'
-    property: Union[Constant, Property, BaseFunction, Interval]
+    property: Union[Constant, Property, BaseFunction, Interval, CastOperator]
     unit: Unit
     alias: str = None
 

@@ -20,9 +20,24 @@ class CastOperator(BaseType):
         VARCHAR = 'varchar'
         TEXT = 'text'
 
+        # Integers
+        SMALLINT = 'smallint'
+        INTEGER = 'integer'
+        INT = 'int'
+
+        # Datetime
+        TIMESTAMP = 'timestamp'
+        DATE = 'date'
+
     obj: Literal['structures.Distinct'] = 'structures.CastOperator'
     property: Union[Constant, Property, BaseFunction]
     to: DataType
+    alias: str = None
 
     def to_sql(self) -> str:
-        return f"{self.property}::{self.to}"
+        sql = f"{self.property}::{self.to.value}"
+
+        if self.alias is not None:
+            sql = f"{sql} AS {self.alias}"
+
+        return sql

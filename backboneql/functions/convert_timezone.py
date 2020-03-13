@@ -5,11 +5,12 @@ from typing_extensions import Literal
 from ..functions.base import BaseFunction
 from ..properties.constant import Constant
 from ..properties.property import Property
+from ..structures.cast_operator import CastOperator
 
 
 class ConvertTimezone(BaseFunction):
     obj: Literal['functions.ConvertTimezone'] = 'functions.ConvertTimezone'
-    property: Union[Property, BaseFunction, Constant]
+    property: Union[Property, BaseFunction, Constant, CastOperator]
     date_from: Constant
     date_to: Constant
     alias: str = None

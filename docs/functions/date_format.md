@@ -13,7 +13,7 @@
 | Attribute       | Accepts                                                  | Required |
 |-----------------|----------------------------------------------------------|----------|
 | obj             | `functions.DateFormat`                                   | True     |
-| property        | `functions.*` `Property` `Constant`                      | True     |
+| property        | `functions.*` `Property` `Constant` `CastOperator`       | True     |
 | format          | String                                                   | True     |
 | alias           | String                                                   | False    |
 

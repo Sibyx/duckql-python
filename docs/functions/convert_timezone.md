@@ -13,7 +13,7 @@
 | Attribute       | Accepts                                                  | Required |
 |-----------------|----------------------------------------------------------|----------|
 | obj             | `functions.ConvertTimezone`                              | True     |
-| property        | `functions.*` `Property` `Constant`                      | True     |
+| property        | `functions.*` `Property` `Constant` `CastOperator`       | True     |
 | date_from       | `Constant`                                               | True     |
 | date_to         | `Constant`                                               | True     |
 | alias           | String                                                   | False    |

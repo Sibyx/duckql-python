@@ -5,32 +5,34 @@
 |                 |                                |
 |-----------------|--------------------------------|
 | **Object type** | `functions.StringAgg`          |
-| **Since**       | 0.1.0                          |
+| **Since**       | 0.1.6                          |
 | **Dialects**    | `MySQL` `MariaDB` `PostgreSQL` |
 
 ## Object attributes
 
 | Attribute       | Accepts                                                  | Required |
 |-----------------|----------------------------------------------------------|----------|
-| obj             | `functions.StringAgg`                                          | True     |
-| property        | string                                                   | True     |
+| obj             | `functions.StringAgg`                                    | True     |
+| property        | `functions.*` `Property` `Array`                         | True     |
+| separator       | string                                                   | True     |
 | alias           | String                                                   | False    |
 
 ## JSON format
 
 ```json
 {
-  "obj": "functions.Sum",
+  "obj": "functions.StringAgg",
   "property": {
     "obj": "properties.Property",
     "name": "transactions.amount"
   },
-  "alias": "total_amount"
+  "separator": ", ",
+  "alias": "amounts"
 }
 ```
 
 ## SQL
 
 ```sql
-SUM(transactions.amount) AS total_amount
+STRING_AGG(transactions.amount, ', ') AS amounts
 ```

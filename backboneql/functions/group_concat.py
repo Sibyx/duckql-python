@@ -5,11 +5,12 @@ from typing_extensions import Literal
 from ..functions.base import BaseFunction
 from ..properties.constant import Constant
 from ..properties.property import Property
+from ..structures.cast_operator import CastOperator
 
 
 class GroupConcat(BaseFunction):
     obj: Literal['functions.GroupConcat'] = 'functions.GroupConcat'
-    property: Union[Constant, Property, BaseFunction]
+    property: Union[Constant, Property, BaseFunction, CastOperator]
     alias: str = None
 
     def to_sql(self) -> str:

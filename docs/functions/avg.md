@@ -13,7 +13,7 @@
 | Attribute       | Accepts                                                  | Required |
 |-----------------|----------------------------------------------------------|----------|
 | obj             | `functions.Avg`                                          | True     |
-| property        | `properties.Property`                                    | True     |
+| property        | `properties.Property` `functions.*` `Constant` `CastOperator` | True     |
 | alias           | String                                                   | False    |
 
 ## JSON format

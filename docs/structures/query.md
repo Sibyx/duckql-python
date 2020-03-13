@@ -14,7 +14,7 @@
 |-----------------|----------------------------------------------------------------------------------------|----------|
 | obj             | `structures.Query`                                                                     | True     |
 | entity          | String                                                                                 | True     |
-| properties      | List[`functions.*` `properties.Property` `structures.Distinct`]                        | True     |
+| properties      | List[`functions.*` `properties.Property` `structures.Distinct` `structures.CastOperator`] | True     |
 | joins           | List[`structures.Join`]                                                                | False    |
 | conditions      | `structures.Operator`                                                                  | False    |
 | order           | List[`structures.Order`]                                                               | False    |

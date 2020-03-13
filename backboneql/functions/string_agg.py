@@ -4,12 +4,14 @@ from pydantic import validator
 from typing_extensions import Literal
 
 from ..functions.base import BaseFunction
+from ..properties import Array
 from ..properties.property import Property
+from ..structures.cast_operator import CastOperator
 
 
 class StringAgg(BaseFunction):
     obj: Literal['functions.StringAgg'] = 'functions.StringAgg'
-    property: Union[Property, BaseFunction]
+    property: Union[Property, BaseFunction, Array, CastOperator]
     separator: str
     alias: str = None
 
@@ -18,7 +20,7 @@ class StringAgg(BaseFunction):
         return cls.escape(v)
 
     def to_sql(self) -> str:
-        sql = f"STRING_AGG({self.property}, {self.separator})"
+        sql = f"STRING_AGG({self.property}, '{self.separator}')"
 
         if self.alias is not None:
             sql = f"{sql} AS {self.alias}"

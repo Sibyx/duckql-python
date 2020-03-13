@@ -13,7 +13,7 @@
 | Attribute       | Accepts                                                  | Required |
 |-----------------|----------------------------------------------------------|----------|
 | obj             | `functions.DateAdd`                                      | True     |
-| property        | `functions.*` `Property` `Constant`                      | True     |
+| property        | `functions.*` `Property` `Constant` `CastOperator`       | True     |
 | interval        | `Interval`                                               | True     |
 | alias           | String                                                   | False    |
 

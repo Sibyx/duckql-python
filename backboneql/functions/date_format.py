@@ -6,11 +6,12 @@ from typing_extensions import Literal
 from ..functions.base import BaseFunction
 from ..properties.property import Property
 from ..properties.constant import Constant
+from ..structures.cast_operator import CastOperator
 
 
 class DateFormat(BaseFunction):
     obj: Literal['functions.DateFormat'] = 'functions.DateFormat'
-    property: Union[Property, Constant, BaseFunction]
+    property: Union[Property, Constant, BaseFunction, CastOperator]
     format: str
     alias: str = None
 

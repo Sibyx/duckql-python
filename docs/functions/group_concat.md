@@ -13,7 +13,7 @@
 | Attribute       | Accepts                                                  | Required |
 |-----------------|----------------------------------------------------------|----------|
 | obj             | `functions.GroupConcat`                                  | True     |
-| property        | `functions.*` `Property` `Constant`                      | True     |
+| property        | `functions.*` `Property` `Constant` `CastOperator`       | True     |
 | alias           | String                                                   | False    |
 
 ## JSON format

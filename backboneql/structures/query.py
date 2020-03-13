@@ -1,5 +1,6 @@
 from typing import List, Union
 
+from .cast_operator import CastOperator
 from ..functions.base import BaseFunction
 from pydantic import validator
 from typing_extensions import Literal
@@ -20,7 +21,7 @@ class Query(BaseType):
 
     obj: Literal['structures.Query'] = 'structures.Query'
     entity: str
-    properties: List[Union[BaseFunction, Property, Distinct]]
+    properties: List[Union[BaseFunction, Property, Distinct, CastOperator]]
     joins: List[Join] = []
     conditions: Union[Operator, Comparision] = None
     order: List[Order] = []

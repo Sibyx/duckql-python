@@ -13,7 +13,7 @@
 | Attribute       | Accepts                                                  | Required |
 |-----------------|----------------------------------------------------------|----------|
 | obj             | `functions.Min`                                          | True     |
-| property        | `functions.*` `Property`                                 | True     |
+| property        | `functions.*` `Property` `CastOperator`                  | True     |
 | alias           | String                                                   | False    |
 
 ## JSON format

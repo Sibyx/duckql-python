@@ -13,7 +13,7 @@
 | Attribute       | Accepts                                                  | Required |
 |-----------------|----------------------------------------------------------|----------|
 | obj             | `functions.Count`                                        | True     |
-| property        | `properties.Property`                                    | True     |
+| property        | `properties.Property` `CastOperator`                     | True     |
 | alias           | String                                                   | False    |
 
 ## JSON format

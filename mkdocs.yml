@@ -22,9 +22,11 @@ nav:
       - 'Limit': structures/limit.md
       - 'Operator': structures/operator.md
       - 'Order': structures/order.md
+      - 'CastOperator': structures/cast_operator.md
       - 'Query': structures/query.md
   - Functions:
       - 'Avg': functions/avg.md
+      - 'StringAgg': functions/string_agg.md
       - 'Concat': functions/concat.md
       - 'ConvertTimezone': functions/convert_timezone.md
       - 'Count': functions/count.md
