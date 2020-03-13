@@ -4,7 +4,6 @@
 
 - **Feature**: Introduced `functions.StringAgg`
 - **Feature**: Introduced `structures.CastOperator`
-
 - **Feature**: CLI for parsing files
 
 ## 0.1.5 : 05.02.2020
