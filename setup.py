@@ -10,7 +10,7 @@ def read_files(files):
 
 
 meta = {}
-with open('./backboneql/__init__.py') as f:
+with open('./backboneql/version.py') as f:
     exec(f.read(), meta)
 
 setup(
@@ -38,7 +38,7 @@ setup(
     },
     classifiers=[
         # As from https://pypi.python.org/pypi?%3Aaction=list_classifiers
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 3 - Alpha',
         'Environment :: Console',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3.5',

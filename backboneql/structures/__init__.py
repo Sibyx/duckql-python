@@ -7,6 +7,7 @@ from .interval import Interval
 from .comparision import Comparision
 from .between import Between
 from .operator import Operator
+from .cast_operator import CastOperator
 
 __all__ = [
     "Join",
@@ -17,5 +18,6 @@ __all__ = [
     "Interval",
     "Comparision",
     "Between",
-    "Operator"
+    "Operator",
+    "CastOperator"
 ]

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.7 : 17.03.2020
+
+- **Fix**: Adding missing imports in `__init__.py` files inside of submodules
+- **Change**: Moved `__version__` from `__init__.py` to `version.py`
+- **Note**: Development status change to Alpha
+
 ## 0.1.6 : 13.03.2020
 
 - **Feature**: Introduced `functions.StringAgg`
