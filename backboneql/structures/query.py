@@ -20,7 +20,7 @@ class Query(BaseType):
         title = 'Query'
 
     obj: Literal['structures.Query'] = 'structures.Query'
-    entity: str
+    entity: Union[str, 'Query']
     properties: List[Union[BaseFunction, Property, Distinct, CastOperator]]
     joins: List[Join] = []
     conditions: Union[Operator, Comparision] = None
@@ -29,9 +29,10 @@ class Query(BaseType):
     limit: Limit = None
     alias: str = None
 
+    @classmethod
     @validator('entity', pre=True)
     def escape_entity(cls, v):
-        return cls.escape(v)
+        return cls.escape(v) if isinstance(v, str) else v
 
     def to_sql(self) -> str:
         sql = f"SELECT {', '.join(map(str, self.properties))} FROM {self.entity}"

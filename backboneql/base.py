@@ -38,7 +38,7 @@ class BaseType(BaseModel, ABC):
                 if 'alias' in values['property'] and values['property']['alias'] is not None:
                     raise ParseError("You can't have alias inside of function!")
             else:
-                if values['property'].alias is not None:
+                if hasattr(values['property'], 'alias') and values['property'].alias is not None:
                     raise ParseError("You can't have alias inside of function!")
 
         return values

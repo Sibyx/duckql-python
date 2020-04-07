@@ -1,4 +1,4 @@
-from backboneql.functions import ConvertTimezone
+from backboneql.functions import ConvertTimezone, Count
 from backboneql.properties import Property, Constant, Array
 from backboneql.structures import Query, Join, Operator, Comparision, Limit, Order
 
@@ -83,6 +83,38 @@ def test_simple():
           "GROUP BY users.email, users.id " \
           "ORDER BY users.surname ASC, users.name DESC " \
           "LIMIT 10 OFFSET 4) AS my_query"
+
+    assert str(my_query) == sql
+
+    json_string = my_query.json()
+    clone = Query.parse_raw(json_string)
+
+    assert clone == my_query
+    assert str(clone) == sql
+
+
+def test_subquery():
+    my_subquery = Query(
+        entity='users',
+        properties=[
+            Property(name='users.name'),
+        ],
+        group=[
+            Property(name='users.birthday'),
+        ],
+        alias='s'
+    )
+
+    my_query = Query(
+        entity=my_subquery,
+        properties=[
+            Count(
+                property=Constant(value='*')
+            ),
+        ],
+    )
+
+    sql = "SELECT COUNT('*') FROM (SELECT users.name FROM users GROUP BY users.birthday) AS s"
 
     assert str(my_query) == sql
 
