@@ -27,6 +27,9 @@ jobs:
     - name: Test with pytest
       run: |
         poetry run pytest . -v
+    - name: Coverage with pytest
+      run: |
+        poetry run pytest . --cov --cov-report xml
     - uses: codecov/codecov-action@v1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
