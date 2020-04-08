@@ -1,5 +1,7 @@
 # duckQL
 
+[![codecov](https://codecov.io/gh/Sibyx/duckql-python/branch/master/graph/badge.svg)](https://codecov.io/gh/Sibyx/duckql-python)
+
 duckQL is simple JSON-based notation for these SQL dialects:
 
 - `psql`
