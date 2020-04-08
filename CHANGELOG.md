@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.2.0
+## 0.2.0 : 2020-04-09
 
 Project renamed to `duckql`, this is the first public release (development status modifier changed to beta).
 

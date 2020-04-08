@@ -1,3 +1,4 @@
+from duckql import Concat, Avg
 from duckql.functions import ConvertTimezone, Count
 from duckql.properties import Property, Constant, Array
 from duckql.structures import Query, Join, Operator, Comparision, Limit, Order
@@ -115,6 +116,88 @@ def test_subquery():
     )
 
     sql = "SELECT COUNT('*') FROM (SELECT users.name FROM users GROUP BY users.birthday) AS s"
+
+    assert str(my_query) == sql
+
+    json_string = my_query.json()
+    clone = Query.parse_raw(json_string)
+
+    assert clone == my_query
+    assert str(clone) == sql
+
+
+def test_short_example():
+    my_query = Query(
+        entity='users',
+        properties=[
+            Property(name='users.name'),
+            Property(name='users.surname')
+        ],
+        conditions=Comparision(
+            properties=[
+                Property(name='users.age'),
+                Constant(value=15)
+            ],
+            operation=Comparision.Operation.GREATER_EQUAL
+        )
+    )
+
+    sql = 'SELECT users.name, users.surname FROM users WHERE (users.age >= 15)'
+
+    assert str(my_query) == sql
+
+    json_string = my_query.json()
+    clone = Query.parse_raw(json_string)
+
+    assert clone == my_query
+    assert str(clone) == sql
+
+
+def test_example():
+    my_query = Query(
+        entity='users',
+        properties=[
+            Concat(
+                properties=[
+                    Property(name='users.name'),
+                    Constant(value=' '),
+                    Property(name='users.surname')
+                ],
+                alias='full_name'
+            ),
+            Avg(
+                property=Property(name='transactions.value'),
+                alias='average_transaction_value'
+            )
+        ],
+        joins=[
+            Join(
+                entity='transactions',
+                type=Join.Type.LEFT,
+                on=Comparision(
+                    properties=[
+                        Property(name='transactions.user_id'),
+                        Property(name='users.id')
+                    ],
+                    operation=Comparision.Operation.EQUAL
+                )
+            )
+        ],
+        conditions=Comparision(
+            properties=[
+                Property(name='users.age'),
+                Constant(value=15)
+            ],
+            operation=Comparision.Operation.GREATER_EQUAL
+        ),
+        group=[
+            Property(name='users.id'),
+        ],
+    )
+
+    sql = "SELECT CONCAT(users.name, ' ', users.surname) AS full_name, AVG(transactions.value) AS " \
+          'average_transaction_value FROM users LEFT JOIN transactions ON (transactions.user_id = users.id) WHERE ' \
+          '(users.age >= 15) GROUP BY users.id'
 
     assert str(my_query) == sql
 

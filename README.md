@@ -3,101 +3,68 @@
 ![Tests](https://github.com/Sibyx/duckql-python/workflows/Tests/badge.svg)
 [![codecov](https://codecov.io/gh/Sibyx/duckql-python/branch/master/graph/badge.svg)](https://codecov.io/gh/Sibyx/duckql-python)
 
-duckQL is simple JSON-based notation for these SQL dialects:
-
-- `psql`
-- `mariadb`
-- `mysql`
+duckQL is simple JSON-based notation for some SQL dialects (PostgreSQL, MariaDB, MySQL) based on
+[pydantic](https://github.com/samuelcolvin/pydantic/) library.
 
 ## Example
 
-Here is a example of library usage.
+Here is a simple example of library usage. For more examples please visit
+[project page](https://sibyx.github.io/duckql-python/).
 
 ```python
-from duckql import ConvertTimezone, Count, Property, Constant, Array, Query, Join, Operator, Comparision, Limit, Order
+from duckql import Query, Property, Comparision, Constant
+
 
 my_query = Query(
-        entity='users',
+    entity='users',
+    properties=[
+        Property(name='users.name'),
+        Property(name='users.surname')
+    ],
+    conditions=Comparision(
         properties=[
-            Property(name='users.name', alias='users_name'),
-            ConvertTimezone(
-                property=Property(name='users.created_at'),
-                date_from=Constant(value='+00:00'),
-                date_to=Constant(value='Europe/Bratislava'),
-                alias='valid_timezone'
-            )
+            Property(name='users.age'),
+            Constant(value=15)
         ],
-        joins=[
-            Join(
-                entity='transactions',
-                type=Join.Type.LEFT,
-                on=Operator(
-                    operation=Operator.Operation.AND,
-                    properties=[
-                        Comparision(
-                            properties=[
-                                Property(name='transactions.user_id'),
-                                Property(name='users.id')
-                            ],
-                            operation=Comparision.Operation.EQUAL
-                        ),
-                        Comparision(
-                            properties=[
-                                Property(name='transactions.creator_id'),
-                                Property(name='users.id')
-                            ],
-                            operation=Comparision.Operation.NOT_EQUAL
-                        ),
-                    ]
-                )
-            )
-        ],
-        conditions=Operator(
-            operation=Operator.Operation.AND,
-            properties=[
-                Comparision(
-                    properties=[
-                        Property(name='users.age'),
-                        Constant(value=15)
-                    ],
-                    operation=Comparision.Operation.GREATER_EQUAL
-                ),
-                Comparision(
-                    properties=[
-                        Property(name='users.city'),
-                        Array(
-                            values=[
-                                Constant(value='Martin'),
-                                Constant(value='Bratislava')
-                            ]
-                        )
-                    ],
-                    operation=Comparision.Operation.IN
-                )
-            ]
-        ),
-        group=[
-            Property(name='users.email'),
-            Property(name='users.id')
-        ],
-        order=[
-            Order(property=Property(name='users.surname')),
-            Order(property=Property(name='users.name'), kind=Order.Direction.DESC)
-        ],
-        limit=Limit(limit=10, offset=4),
-        alias="my_query"
+        operation=Comparision.Operation.GREATER_EQUAL
     )
+)
 ```
 
 ```json
-
+{
+  "obj": "structures.Query",
+  "entity": "users",
+  "properties": [
+    {
+      "obj": "properties.Property",
+      "name": "users.name"
+    },
+    {
+      "obj": "properties.Property",
+      "name": "users.surname"
+    }
+  ],
+  "conditions": {
+    "obj": "structures.Comparision",
+    "properties": [
+      {
+        "obj": "properties.Property",
+        "name": "users.age"
+      },
+      {
+        "obj": "properties.Constant",
+        "value": "15"
+      }
+    ],
+    "operation": "gte"
+  }
+}
 ```
 
 ```postgresql
-
+SELECT users.name, users.surname FROM users WHERE (users.age >= 15);
 ```
-
-## Motivation
 
 ## Development
 
