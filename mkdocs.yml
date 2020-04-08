@@ -2,7 +2,7 @@
 site_name: duckQL
 site_description: 'Python bindings for duckQL'
 site_author: 'Jakub Dubec'
-site_url: 'https://github.com/Sibyx/duckql-python'
+site_url: 'https://sibyx.github.io/duckql-python/'
 
 # Navigation
 nav:
