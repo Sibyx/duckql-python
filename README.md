@@ -1,5 +1,6 @@
-# duckQL
+# duckQL 🐥
 
+![PyPi package](https://img.shields.io/pypi/v/duckql)
 ![Tests](https://github.com/Sibyx/duckql-python/workflows/Tests/badge.svg)
 [![codecov](https://codecov.io/gh/Sibyx/duckql-python/branch/master/graph/badge.svg)](https://codecov.io/gh/Sibyx/duckql-python)
 
