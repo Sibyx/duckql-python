@@ -27,3 +27,8 @@ jobs:
     - name: Test with pytest
       run: |
         poetry run pytest . -v
+    - uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: ./coverage.xml
+        flags: unittests
