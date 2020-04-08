@@ -1,8 +1,8 @@
 # Project information
-site_name: backboneQL
-site_description: 'Python bindings for backboneQL'
+site_name: duckQL
+site_description: 'Python bindings for duckQL'
 site_author: 'Jakub Dubec'
-site_url: 'https://gitlab.backbone.sk/backboneql/backboneql-python'
+site_url: 'https://github.com/Sibyx/duckql-python'
 
 # Navigation
 nav:
@@ -42,8 +42,8 @@ nav:
       - 'Weekday': functions/weekday.md
 
 # Repository
-repo_name: 'backboneql/backboneql-python'
-repo_url: 'https://gitlab.backbone.sk/backboneql/backboneql-python'
+repo_name: 'Sibyx/duckql-python'
+repo_url: 'https://github.com/Sibyx/duckql-python'
 
 # Configuration
 theme:

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.0
+
+Project renamed to `duckql`, this is the first public release (development status modifier changed to beta).
+
+- **Change**: Name changed to `duckql`
+- **Change**: [Poetry](https://python-poetry.org/) as package manager
+
 ## 0.1.8 : 2020-04-07
 
 - **Feature**: Subquery support

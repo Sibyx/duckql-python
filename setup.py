@@ -10,21 +10,21 @@ def read_files(files):
 
 
 meta = {}
-with open('./backboneql/version.py') as f:
+with open('duckql/version.py') as f:
     exec(f.read(), meta)
 
 setup(
-    name='backboneql',
+    name='duckql',
     version=meta['__version__'],
     packages=[
-        'backboneql', 'backboneql.functions', 'backboneql.properties', 'backboneql.structures',
+        'duckql', 'duckql.functions', 'duckql.properties', 'duckql.structures',
     ],
     install_requires=[
         'pydantic==1.*',
         'click==7.*',
         'typing-extensions'
     ],
-    url='https://gitlab.backbone.sk/backboneql/backboneql-python',
+    url='https://github.com/Sibyx/duckql-python',
     license='MIT',
     author='Jakub Dubec',
     author_email='jakub.dubec@gmail.com',
@@ -33,15 +33,14 @@ setup(
     long_description_content_type='text/markdown',
     entry_points={
         "console_scripts": [
-            'backboneql-cli = backboneql.cli:cli'
+            'duckql-cli = duckql.cli:cli'
         ]
     },
     classifiers=[
         # As from https://pypi.python.org/pypi?%3Aaction=list_classifiers
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Environment :: Console',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
