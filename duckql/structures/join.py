@@ -52,10 +52,10 @@ class Join(BaseType):
     def to_sql(self) -> str:
         sql = f"{self.type} JOIN {self.entity}"
 
+        if self.alias is not None:
+            sql = f"{sql} {self.alias}"
+
         if self.type != self.Type.NATURAL:
             sql = f"{sql} ON {self.on}"
-
-        if self.alias is not None:
-            sql = f"{sql} AS {self.alias}"
 
         return sql

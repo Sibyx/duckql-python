@@ -11,14 +11,14 @@ def test_simple():
             properties=[
                 Comparision(
                     properties=[
-                        Property(name='transactions.user_id'),
+                        Property(name='t.user_id'),
                         Property(name='users.id')
                     ],
                     operation=Comparision.Operation.EQUAL
                 ),
                 Comparision(
                     properties=[
-                        Property(name='transactions.creator_id'),
+                        Property(name='t.creator_id'),
                         Property(name='users.id')
                     ],
                     operation=Comparision.Operation.NOT_EQUAL
@@ -28,8 +28,7 @@ def test_simple():
         alias="t"
     )
 
-    sql = "LEFT JOIN transactions ON ((transactions.user_id = users.id) " \
-          "AND (transactions.creator_id != users.id)) AS t"
+    sql = "LEFT JOIN transactions t ON ((t.user_id = users.id) AND (t.creator_id != users.id))"
     assert str(my_join) == sql
 
 

@@ -35,7 +35,7 @@
         "properties": [
           {
             "obj": "properties.Property",
-            "name": "transactions.user_id"
+            "name": "t.user_id"
           },
           {
             "obj": "properties.Property",
@@ -49,7 +49,7 @@
         "properties": [
           {
             "obj": "properties.Property",
-            "name": "transactions.creator_id"
+            "name": "t.creator_id"
           },
           {
             "obj": "properties.Property",
@@ -67,6 +67,6 @@
 **SQL**
 
 ```sql
-LEFT JOIN transactions ON ((transactions.user_id = users.id) AND (transactions.creator_id != users.id)) AS t
+LEFT JOIN transactions t ON ((t.user_id = users.id) AND (t.creator_id != users.id))
 ```
 
