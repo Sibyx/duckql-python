@@ -3,6 +3,7 @@
 ![PyPi package](https://img.shields.io/pypi/v/duckql)
 ![Tests](https://github.com/Sibyx/duckql-python/workflows/Tests/badge.svg)
 [![codecov](https://codecov.io/gh/Sibyx/duckql-python/branch/master/graph/badge.svg)](https://codecov.io/gh/Sibyx/duckql-python)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FSibyx%2Fduckql-python.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FSibyx%2Fduckql-python?ref=badge_shield)
 
 duckQL is simple JSON-based notation for some SQL dialects (PostgreSQL, MariaDB, MySQL) based on
 [pydantic](https://github.com/samuelcolvin/pydantic/) library.
@@ -87,3 +88,7 @@ for code-style validation. You can execute tests inside of pipenv shell using th
 
 ---
 Made with ☕️ and ❤️ by Jakub Dubec & [BACKBONE s.r.o.](https://www.backbone.sk/en/)
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FSibyx%2Fduckql-python.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FSibyx%2Fduckql-python?ref=badge_large)
