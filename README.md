@@ -86,9 +86,8 @@ for code-style validation. You can execute tests inside of pipenv shell using th
 - `pytest -v .`: executes unit tests
 - `pytest -v --flake8 .`: flake8 code-style tests
 
----
-Made with ☕️ and ❤️ by Jakub Dubec & [BACKBONE s.r.o.](https://www.backbone.sk/en/)
-
-
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FSibyx%2Fduckql-python.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FSibyx%2Fduckql-python?ref=badge_large)
+
+---
+Made with ☕️ and ❤️ by Jakub Dubec & [BACKBONE s.r.o.](https://www.backbone.sk/en/)

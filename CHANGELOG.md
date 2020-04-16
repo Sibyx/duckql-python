@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.2 : 2020-04-16
+
+- **Change**: Ability to pass `structures.Distinct` into `functions.StringAgg`
+
 ## 0.2.1 : 2020-04-09
 
 - **Fix**: Fixed JOIN aliases
