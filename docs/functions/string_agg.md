@@ -13,7 +13,7 @@
 | Attribute       | Accepts                                                  | Required |
 |-----------------|----------------------------------------------------------|----------|
 | obj             | `functions.StringAgg`                                    | True     |
-| property        | `functions.*` `Property` `Array`                         | True     |
+| property        | `functions.*` `Property` `Array` `structures.distinct`   | True     |
 | separator       | string                                                   | True     |
 | alias           | String                                                   | False    |
 
