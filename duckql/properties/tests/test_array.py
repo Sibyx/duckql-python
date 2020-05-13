@@ -11,4 +11,4 @@ def test_simple():
         ]
     )
 
-    assert str(my_array) == f"('Arthur Dent', 'Deep Thought', 'Tricia Marie McMillan', 'Questular Rontok')"
+    assert str(my_array) == "('Arthur Dent', 'Deep Thought', 'Tricia Marie McMillan', 'Questular Rontok')"
