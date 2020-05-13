@@ -48,7 +48,11 @@ repo_url: 'https://github.com/Sibyx/duckql-python'
 # Configuration
 theme:
   name: 'material'
+  custom_dir: docs/custom/
   language: 'en'
+  features:
+    - instant
+    - tabs
 
 # Extensions
 markdown_extensions:

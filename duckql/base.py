@@ -51,7 +51,7 @@ class BaseType(BaseModel, ABC):
         return self.to_sql()
 
     @staticmethod
-    def escape(value: str, ignore: List = None) -> str:
+    def escape(value: str, ignore: List[str] = None) -> str:
         insecure_chars = {
             "\0": "\\0",
             "\r": "\\r",
