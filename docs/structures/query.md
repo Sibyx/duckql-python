@@ -16,9 +16,10 @@
 | entity          | String                                                                                 | True     |
 | properties      | List[`functions.*` `properties.Property` `structures.Distinct` `structures.CastOperator`] | True     |
 | joins           | List[`structures.Join`]                                                                | False    |
-| conditions      | `structures.Operator`                                                                  | False    |
+| conditions      | `structures.Operator` `structures.Comparision`                                         | False    |
 | order           | List[`structures.Order`]                                                               | False    |
 | group           | List[`functions.*` `properties.Property`]                                              | False    |
+| having          | `structures.Operator` `structures.Comparision`                                         | False    |
 | limit           | `structures.Limit`                                                                     | False    |
 | alias           | String                                                                                 | False    |
 
@@ -31,13 +32,15 @@
   "properties": [
     {
       "obj": "properties.Property",
-      "name": "users.name"
+      "name": "users.name",
+      "alias": "users_name"
     },
     {
       "obj": "functions.ConvertTimezone",
       "property": {
         "obj": "properties.Property",
-        "name": "users.created_at"
+        "name": "users.created_at",
+        "alias": null
       },
       "date_from": {
         "obj": "properties.Constant",
@@ -46,7 +49,8 @@
       "date_to": {
         "obj": "properties.Constant",
         "value": "Europe/Bratislava"
-      }
+      },
+      "alias": "valid_timezone"
     }
   ],
   "joins": [
@@ -63,11 +67,13 @@
             "properties": [
               {
                 "obj": "properties.Property",
-                "name": "transactions.user_id"
+                "name": "transactions.user_id",
+                "alias": null
               },
               {
                 "obj": "properties.Property",
-                "name": "users.id"
+                "name": "users.id",
+                "alias": null
               }
             ],
             "operation": "eq"
@@ -77,17 +83,21 @@
             "properties": [
               {
                 "obj": "properties.Property",
-                "name": "transactions.creator_id"
+                "name": "transactions.creator_id",
+                "alias": null
               },
               {
                 "obj": "properties.Property",
-                "name": "users.id"
+                "name": "users.id",
+                "alias": null
               }
             ],
             "operation": "neq"
           }
-        ]
-      }
+        ],
+        "alias": null
+      },
+      "alias": null
     }
   ],
   "conditions": {
@@ -99,7 +109,8 @@
         "properties": [
           {
             "obj": "properties.Property",
-            "name": "users.age"
+            "name": "users.age",
+            "alias": null
           },
           {
             "obj": "properties.Constant",
@@ -113,7 +124,8 @@
         "properties": [
           {
             "obj": "properties.Property",
-            "name": "users.city"
+            "name": "users.city",
+            "alias": null
           },
           {
             "obj": "properties.Array",
@@ -131,14 +143,35 @@
         ],
         "operation": "in"
       }
-    ]
+    ],
+    "alias": null
+  },
+  "having": {
+    "obj": "structures.Comparision",
+    "properties": [
+      {
+        "obj": "functions.Sum",
+        "property": {
+          "obj": "properties.Property",
+          "name": "transactions.value",
+          "alias": null
+        },
+        "alias": null
+      },
+      {
+        "obj": "properties.Constant",
+        "value": "420"
+      }
+    ],
+    "operation": "gt"
   },
   "order": [
     {
       "obj": "structures.Order",
       "property": {
         "obj": "properties.Property",
-        "name": "users.surname"
+        "name": "users.surname",
+        "alias": null
       },
       "kind": "ASC"
     },
@@ -146,7 +179,8 @@
       "obj": "structures.Order",
       "property": {
         "obj": "properties.Property",
-        "name": "users.name"
+        "name": "users.name",
+        "alias": null
       },
       "kind": "DESC"
     }
@@ -154,11 +188,13 @@
   "group": [
     {
       "obj": "properties.Property",
-      "name": "users.email"
+      "name": "users.email",
+      "alias": null
     },
     {
       "obj": "properties.Property",
-      "name": "users.id"
+      "name": "users.id",
+      "alias": null
     }
   ],
   "limit": {
@@ -187,12 +223,10 @@
 		(users.age >= 15)
 		AND (users.city IN ('Martin', 'Bratislava'))
 	)
-	GROUP BY users.email,
-	users.id
-	ORDER BY users.surname ASC,
-	users.name DESC
+	GROUP BY users.email, users.id
+    HAVING (SUM(transactions.value) > 420)
+	ORDER BY users.surname ASC, users.name DESC
 	LIMIT 10 OFFSET 4
 )
 AS my_query
 ```
-

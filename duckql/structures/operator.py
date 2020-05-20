@@ -8,6 +8,7 @@ from ..base import BaseType
 from ..properties.constant import Constant
 from ..properties.property import Property
 from ..properties.boolean import Boolean
+from ..structures.interval import Interval
 from .comparision import Comparision
 
 
@@ -37,7 +38,7 @@ class Operator(BaseType):
 
     obj: Literal['structures.Operator'] = 'structures.Operator'
     operation: Operation
-    properties: List[Union[BaseFunction, Constant, Property, Boolean, Comparision]]
+    properties: List[Union[BaseFunction, Constant, Property, Boolean, Comparision, Interval]]
     alias: str = None
 
     def to_sql(self) -> str:

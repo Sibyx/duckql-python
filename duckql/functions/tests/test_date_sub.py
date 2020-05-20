@@ -10,4 +10,4 @@ def test_simple():
         alias="sub_dated"
     )
 
-    assert str(my_function) == "DATE_SUB(users.created_at, INTERVAL 5 DAY_MINUTE) AS sub_dated"
+    assert str(my_function) == "DATE_SUB(users.created_at, INTERVAL '5 DAY_MINUTE') AS sub_dated"

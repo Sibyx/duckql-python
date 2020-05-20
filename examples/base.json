@@ -4,15 +4,13 @@
   "properties": [
     {
       "obj": "property",
-      "name": "users.name",
-      "alias": null
+      "name": "users.name"
     },
     {
       "obj": "convert_timezone",
       "property": {
         "obj": "property",
-        "name": "users.created_at",
-        "alias": null
+        "name": "users.created_at"
       },
       "date_from": {
         "obj": "constant",
@@ -21,8 +19,7 @@
       "date_to": {
         "obj": "constant",
         "value": "Europe/Bratislava"
-      },
-      "alias": null
+      }
     }
   ],
   "joins": [
@@ -39,13 +36,11 @@
             "properties": [
               {
                 "obj": "property",
-                "name": "transactions.user_id",
-                "alias": null
+                "name": "transactions.user_id"
               },
               {
                 "obj": "property",
-                "name": "users.id",
-                "alias": null
+                "name": "users.id"
               }
             ],
             "operation": "eq"
@@ -55,21 +50,17 @@
             "properties": [
               {
                 "obj": "property",
-                "name": "transactions.creator_id",
-                "alias": null
+                "name": "transactions.creator_id"
               },
               {
                 "obj": "property",
-                "name": "users.id",
-                "alias": null
+                "name": "users.id"
               }
             ],
             "operation": "neq"
           }
-        ],
-        "alias": null
-      },
-      "alias": null
+        ]
+      }
     }
   ],
   "conditions": {
@@ -81,8 +72,7 @@
         "properties": [
           {
             "obj": "property",
-            "name": "users.age",
-            "alias": null
+            "name": "users.age"
           },
           {
             "obj": "constant",
@@ -96,8 +86,7 @@
         "properties": [
           {
             "obj": "property",
-            "name": "users.city",
-            "alias": null
+            "name": "users.city"
           },
           {
             "obj": "array",
@@ -115,16 +104,14 @@
         ],
         "operation": "in"
       }
-    ],
-    "alias": null
+    ]
   },
   "order": [
     {
       "obj": "order",
       "property": {
         "obj": "property",
-        "name": "users.surname",
-        "alias": null
+        "name": "users.surname"
       },
       "kind": "ASC"
     },
@@ -132,8 +119,7 @@
       "obj": "order",
       "property": {
         "obj": "property",
-        "name": "users.name",
-        "alias": null
+        "name": "users.name"
       },
       "kind": "DESC"
     }
@@ -141,13 +127,11 @@
   "group": [
     {
       "obj": "property",
-      "name": "users.email",
-      "alias": null
+      "name": "users.email"
     },
     {
       "obj": "property",
-      "name": "users.id",
-      "alias": null
+      "name": "users.id"
     }
   ],
   "limit": {

@@ -10,4 +10,4 @@ def test_simple():
         alias="add_dated"
     )
 
-    assert str(my_function) == "DATE_ADD(users.created_at, INTERVAL 4 YEAR_MONTH) AS add_dated"
+    assert str(my_function) == "DATE_ADD(users.created_at, INTERVAL '4 YEAR_MONTH') AS add_dated"

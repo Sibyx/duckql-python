@@ -1,17 +1,12 @@
 from enum import Enum
-from typing import Union, List
+from typing import List
 
-from duckql.functions.base import BaseFunction
 from pydantic import validator
 from typing_extensions import Literal
 
 from duckql.exceptions import ParseError
 from duckql.base import BaseType
-from duckql.properties.constant import Constant
-from duckql.properties.property import Property
 from duckql.properties.array import Array
-from duckql.properties.boolean import Boolean
-from duckql.properties.null import Null
 
 
 class Comparision(BaseType):
@@ -57,7 +52,7 @@ class Comparision(BaseType):
             return [cls.NOT_IN, cls.IN]
 
     obj: Literal['structures.Comparision'] = 'structures.Comparision'
-    properties: List[Union[Constant, Property, BaseFunction, Array, Boolean, Null]]
+    properties: List[BaseType]
     operation: Operation
 
     @validator('properties', pre=True)

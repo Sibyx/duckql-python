@@ -7,4 +7,4 @@ def test_simple():
         unit=Interval.Unit.DAY
     )
 
-    assert str(my_interval) == "INTERVAL -5 DAY"
+    assert str(my_interval) == "INTERVAL '-5 DAY'"

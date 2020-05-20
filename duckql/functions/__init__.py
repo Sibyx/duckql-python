@@ -12,6 +12,7 @@ from .min_max import Max, Min
 from .sum import Sum
 from .weekday import Weekday
 from .string_agg import StringAgg
+from .now import Now
 
 __all__ = [
     "Avg",
@@ -28,5 +29,6 @@ __all__ = [
     "Min",
     "Sum",
     "Weekday",
-    "StringAgg"
+    "StringAgg",
+    "Now"
 ]

@@ -33,4 +33,4 @@ class Interval(BaseType):
     unit: Unit
 
     def to_sql(self) -> str:
-        return f"INTERVAL {self.value} {self.unit.value.upper()}"
+        return f"INTERVAL '{self.value} {self.unit.value.upper()}'"

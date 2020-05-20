@@ -1,7 +1,8 @@
-from duckql import Concat, Avg
+from duckql import Concat, Avg, Interval, Sum
 from duckql.functions import ConvertTimezone, Count
 from duckql.properties import Property, Constant, Array
 from duckql.structures import Query, Join, Operator, Comparision, Limit, Order
+from duckql.functions import Now
 
 
 def test_simple():
@@ -69,6 +70,13 @@ def test_simple():
             Property(name='users.email'),
             Property(name='users.id')
         ],
+        having=Comparision(
+            operation=Comparision.Operation.GREATER,
+            properties=[
+                Sum(property=Property(name='transactions.value')),
+                Constant(value=420)
+            ]
+        ),
         order=[
             Order(property=Property(name='users.surname')),
             Order(property=Property(name='users.name'), kind=Order.Direction.DESC)
@@ -82,6 +90,7 @@ def test_simple():
           "LEFT JOIN transactions ON ((transactions.user_id = users.id) AND (transactions.creator_id != users.id)) " \
           "WHERE ((users.age >= 15) AND (users.city IN ('Martin', 'Bratislava'))) " \
           "GROUP BY users.email, users.id " \
+          "HAVING (SUM(transactions.value) > 420) " \
           "ORDER BY users.surname ASC, users.name DESC " \
           "LIMIT 10 OFFSET 4) AS my_query"
 
@@ -198,6 +207,67 @@ def test_example():
     sql = "SELECT CONCAT(users.name, ' ', users.surname) AS full_name, AVG(transactions.value) AS " \
           'average_transaction_value FROM users LEFT JOIN transactions ON (transactions.user_id = users.id) WHERE ' \
           '(users.age >= 15) GROUP BY users.id'
+
+    assert str(my_query) == sql
+
+    json_string = my_query.json()
+    clone = Query.parse_raw(json_string)
+
+    assert clone == my_query
+    assert str(clone) == sql
+
+
+def test_having():
+    my_query = Query(
+        entity='organisations',
+        properties=[
+            Property(name='organisations.id'),
+            Count(property=Property(name='campaigns.id'))
+        ],
+        joins=[
+            Join(
+                type=Join.Type.LEFT,
+                entity='campaigns',
+                on=Comparision(
+                    operation=Comparision.Operation.EQUAL,
+                    properties=[
+                        Property(name='organisations.id'),
+                        Property(name='campaigns.organisation_id')
+                    ]
+                )
+            )
+        ],
+        conditions=Comparision(
+            operation=Comparision.Operation.LOWER,
+            properties=[
+                Property(name='organisations.created_at'),
+                Operator(
+                    operation=Operator.Operation.SUBTRACTION,
+                    properties=[
+                        Now(),
+                        Interval(
+                            value=1,
+                            unit=Interval.Unit.MONTH
+                        )
+                    ]
+                )
+            ]
+        ),
+        group=[
+            Property(name='organisations.id')
+        ],
+        having=Comparision(
+            operation=Comparision.Operation.EQUAL,
+            properties=[
+                Count(property=Property(name='campaigns.id')),
+                Constant(value=0)
+            ]
+        )
+    )
+
+    sql = "SELECT organisations.id, COUNT(campaigns.id) FROM organisations LEFT JOIN campaigns ON " \
+          "(organisations.id = campaigns.organisation_id) WHERE (organisations.created_at < " \
+          "(NOW() - INTERVAL '1 MONTH')) GROUP BY organisations.id HAVING (COUNT(campaigns.id) = 0)"
 
     assert str(my_query) == sql
 

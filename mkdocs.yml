@@ -40,6 +40,7 @@ nav:
       - 'Min': functions/min.md
       - 'Sum': functions/sum.md
       - 'Weekday': functions/weekday.md
+      - 'Now': functions/now.md
 
 # Repository
 repo_name: 'Sibyx/duckql-python'

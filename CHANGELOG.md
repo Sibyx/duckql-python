@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.0 : 2020-05-20
+
+- **Feature**: `HAVING` support
+- **Feature**: `NOW()` support
+- **Fix**: `Comparision` allows to have every `BaseType` as `properties`
+- **Fix**: Interval value is quoted now
+
 ## 0.2.2 : 2020-04-16
 
 - **Change**: Ability to pass `structures.Distinct` into `functions.StringAgg`

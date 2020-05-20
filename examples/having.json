@@ -1,0 +1,85 @@
+{
+  "obj": "structures.Query",
+  "entity": "organisations",
+  "properties": [
+    {
+      "obj": "properties.Property",
+      "name": "organisations.id"
+    },
+    {
+      "obj": "functions.Count",
+      "property": {
+        "obj": "properties.Property",
+        "name": "campaigns.id"
+      }
+    }
+  ],
+  "joins": [
+    {
+      "obj": "structures.Join",
+      "entity": "campaigns",
+      "type": "left",
+      "on": {
+        "obj": "structures.Comparision",
+        "properties": [
+          {
+            "obj": "properties.Property",
+            "name": "organisations.id"
+          },
+          {
+            "obj": "properties.Property",
+            "name": "campaigns.organisation_id"
+          }
+        ],
+        "operation": "eq"
+      }
+    }
+  ],
+  "conditions": {
+    "obj": "structures.Comparision",
+    "properties": [
+      {
+        "obj": "properties.Property",
+        "name": "organisations.created_at"
+      },
+      {
+        "obj": "structures.Operator",
+        "operation": "subtraction",
+        "properties": [
+          {
+            "obj": "functions.Now"
+          },
+          {
+            "obj": "structures.Interval",
+            "value": 1,
+            "unit": "month"
+          }
+        ]
+      }
+    ],
+    "operation": "lt"
+  },
+  "having": {
+    "obj": "structures.Comparision",
+    "properties": [
+      {
+        "obj": "functions.Count",
+        "property": {
+          "obj": "properties.Property",
+          "name": "campaigns.id"
+        },
+      },
+      {
+        "obj": "properties.Constant",
+        "value": "0"
+      }
+    ],
+    "operation": "eq"
+  },
+  "group": [
+    {
+      "obj": "properties.Property",
+      "name": "organisations.id"
+    }
+  ]
+}

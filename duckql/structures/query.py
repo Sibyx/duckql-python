@@ -24,6 +24,7 @@ class Query(BaseType):
     properties: List[Union[BaseFunction, Property, Distinct, CastOperator]]
     joins: List[Join] = []
     conditions: Union[Operator, Comparision] = None
+    having: Union[Operator, Comparision] = None
     order: List[Order] = []
     group: List[Union[Property, BaseFunction]] = []
     limit: Limit = None
@@ -45,6 +46,9 @@ class Query(BaseType):
 
         if self.group:
             sql = f"{sql} GROUP BY {', '.join(map(str, self.group))}"
+
+        if self.having:
+            sql = f"{sql} HAVING {self.having}"
 
         if self.order:
             sql = f"{sql} ORDER BY {', '.join(map(str, self.order))}"

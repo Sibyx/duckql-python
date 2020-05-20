@@ -29,6 +29,6 @@
 ## SQL
 
 ```sql
-INTERVAL -5 DAY
+INTERVAL '-5 DAY'
 ```
 
