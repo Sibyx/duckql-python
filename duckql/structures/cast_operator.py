@@ -24,6 +24,7 @@ class CastOperator(BaseType):
         SMALLINT = 'smallint'
         INTEGER = 'integer'
         INT = 'int'
+        REAL = 'real'
 
         # Datetime
         TIMESTAMP = 'timestamp'

@@ -13,6 +13,7 @@ from ..structures.interval import Interval
 class Extract(BaseFunction):
     class Unit(Enum):
         CENTURY = 'century'
+        DAY = 'day'
         DECADE = 'decade'
         DOW = 'dow'
         DOY = 'doy'

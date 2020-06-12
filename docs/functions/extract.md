@@ -14,7 +14,7 @@
 |-----------------|----------------------------------------------------------|----------|
 | obj             | `functions.Extract`                                      | True     |
 | property        | List[`functions.*` `Property` `Constant` `Interval` `CastOperator`] | True     |
-| unit            | Enum[`century` `decade` `dow` `doy` `epoch` `hour` `isodow` `isoyear` `microseconds` `millennium` `milliseconds` `minute` `month` `quarter` `second` `timezone` `timezone_hour` `timezone_minute` `week` `year`] | True     |
+| unit            | Enum[`century` `day` `decade` `dow` `doy` `epoch` `hour` `isodow` `isoyear` `microseconds` `millennium` `milliseconds` `minute` `month` `quarter` `second` `timezone` `timezone_hour` `timezone_minute` `week` `year`] | True     |
 | alias           | String                                                   | False    |
 
 ## JSON format

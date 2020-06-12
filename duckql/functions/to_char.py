@@ -7,21 +7,21 @@ from ..functions.base import BaseFunction
 from ..properties.property import Property
 from ..properties.constant import Constant
 from ..structures.cast_operator import CastOperator
+from ..structures.interval import Interval
 
 
-class DateFormat(BaseFunction):
-    obj: Literal['functions.DateFormat'] = 'functions.DateFormat'
-    property: Union[Property, Constant, BaseFunction, CastOperator]
+class ToChar(BaseFunction):
+    obj: Literal['functions.ToChar'] = 'functions.ToChar'
+    property: Union[Property, Constant, BaseFunction, CastOperator, Interval]
     format: str
     alias: str = None
 
     @validator('format', pre=True)
     def sanitize_format(cls, v):
-        return cls.escape(v, ['%'])
+        return cls.escape(v)
 
     def to_sql(self) -> str:
-        # TODO: postgresql notation for to_char
-        sql = f"DATE_FORMAT({self.property}, '{self.format}')"
+        sql = f"to_char({self.property}, '{self.format}')"
 
         if self.alias is not None:
             sql = f"{sql} AS {self.alias}"

@@ -41,6 +41,8 @@ nav:
       - 'Sum': functions/sum.md
       - 'Weekday': functions/weekday.md
       - 'Now': functions/now.md
+      - 'ToChar': functions/to_char.md
+      - 'ToDate': functions/to_date.md
 
 # Repository
 repo_name: 'Sibyx/duckql-python'

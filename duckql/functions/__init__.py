@@ -13,6 +13,8 @@ from .sum import Sum
 from .weekday import Weekday
 from .string_agg import StringAgg
 from .now import Now
+from .to_char import ToChar
+from .to_date import ToDate
 
 __all__ = [
     "Avg",
@@ -30,5 +32,7 @@ __all__ = [
     "Sum",
     "Weekday",
     "StringAgg",
-    "Now"
+    "Now",
+    "ToChar",
+    "ToDate"
 ]

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.0 : 2020-06-12
+
+- **Feature**: `Extract.Unit.DAY` introduced
+- **Feature**: `CastOperator.DataType.REAL` introduced
+- **Feature**: pSQL `to_char` function introduced
+- **Feature**: pSQL `to_date` function introduced
+
 ## 0.3.0 : 2020-05-20
 
 - **Feature**: `HAVING` support
