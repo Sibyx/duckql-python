@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.0 :
+
+- **Feature**: `QueryFactory` supporting `json`, `msgpack` and `bson`
+
 ## 0.4.0 : 2020-06-12
 
 - **Feature**: `Extract.Unit.DAY` introduced

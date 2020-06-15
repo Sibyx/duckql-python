@@ -34,6 +34,9 @@ from .structures import Operator
 from .structures import Order
 from .structures import Query
 
+# Utils
+from .factory import QueryFactory
+
 __all__ = [
     'Avg',
     'Concat',
@@ -64,5 +67,6 @@ __all__ = [
     'Limit',
     'Operator',
     'Order',
-    'Query'
+    'Query',
+    'QueryFactory'
 ]
