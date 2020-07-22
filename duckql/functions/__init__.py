@@ -15,6 +15,7 @@ from .string_agg import StringAgg
 from .now import Now
 from .to_char import ToChar
 from .to_date import ToDate
+from .unaccent import Unaccent
 
 __all__ = [
     "Avg",
@@ -34,5 +35,6 @@ __all__ = [
     "StringAgg",
     "Now",
     "ToChar",
-    "ToDate"
+    "ToDate",
+    "Unaccent"
 ]

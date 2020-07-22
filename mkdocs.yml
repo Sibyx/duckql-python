@@ -43,6 +43,7 @@ nav:
       - 'Now': functions/now.md
       - 'ToChar': functions/to_char.md
       - 'ToDate': functions/to_date.md
+      - 'Unaccent': functions/unaccent.md
 
 # Repository
 repo_name: 'Sibyx/duckql-python'

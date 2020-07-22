@@ -1,8 +1,9 @@
 # Changelog
 
-## 0.5.0 :
+## 0.5.0 : 2020-07-22
 
 - **Feature**: `QueryFactory` supporting `json`, `msgpack` and `bson`
+- **Feature**: pSQL `unaccent` function introduced
 
 ## 0.4.0 : 2020-06-12
 
