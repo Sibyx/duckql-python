@@ -44,6 +44,9 @@ nav:
       - 'ToChar': functions/to_char.md
       - 'ToDate': functions/to_date.md
       - 'Unaccent': functions/unaccent.md
+      - 'Lower': functions/lower.md
+      - 'Upper': functions/upper.md
+      - 'InitCap': functions/initcap.md
 
 # Repository
 repo_name: 'Sibyx/duckql-python'

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.0 : 2020-07-23
+
+- **Feature**: `lower` function introduced
+- **Feature**: `upper` function introduced
+- **Feature**: pSQL `initcap` function introduced
+
 ## 0.5.0 : 2020-07-22
 
 - **Feature**: `QueryFactory` supporting `json`, `msgpack` and `bson`

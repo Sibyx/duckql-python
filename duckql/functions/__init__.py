@@ -16,6 +16,9 @@ from .now import Now
 from .to_char import ToChar
 from .to_date import ToDate
 from .unaccent import Unaccent
+from .lower import Lower
+from .upper import Upper
+from .initcap import InitCap
 
 __all__ = [
     "Avg",
@@ -36,5 +39,8 @@ __all__ = [
     "Now",
     "ToChar",
     "ToDate",
-    "Unaccent"
+    "Unaccent",
+    "Lower",
+    "Upper",
+    "InitCap"
 ]
