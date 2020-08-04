@@ -2,7 +2,11 @@ from typing import Union, List
 
 from duckql.functions.base import BaseFunction
 from pydantic import validator
-from typing_extensions import Literal
+
+try:
+    from typing import Literal
+except ImportError:
+    from typing_extensions import Literal
 
 from ..exceptions import ParseError
 from ..base import BaseType

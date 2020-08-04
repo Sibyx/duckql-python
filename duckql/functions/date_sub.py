@@ -1,6 +1,9 @@
 from typing import Union
 
-from typing_extensions import Literal
+try:
+    from typing import Literal
+except ImportError:
+    from typing_extensions import Literal
 
 from ..functions.base import BaseFunction
 from ..properties.constant import Constant

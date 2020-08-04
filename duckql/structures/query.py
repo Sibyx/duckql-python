@@ -3,7 +3,11 @@ from typing import List, Union
 from .cast_operator import CastOperator
 from ..functions.base import BaseFunction
 from pydantic import validator
-from typing_extensions import Literal
+
+try:
+    from typing import Literal
+except ImportError:
+    from typing_extensions import Literal
 
 from ..base import BaseType
 from ..properties.property import Property

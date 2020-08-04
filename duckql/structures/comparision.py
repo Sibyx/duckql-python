@@ -2,7 +2,11 @@ from enum import Enum
 from typing import List
 
 from pydantic import validator
-from typing_extensions import Literal
+
+try:
+    from typing import Literal
+except ImportError:
+    from typing_extensions import Literal
 
 from duckql.exceptions import ParseError
 from duckql.base import BaseType

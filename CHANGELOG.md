@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.1 : 2020-08-04
+
+- **Fix**: Use native `typing.Literal` if possible (Python 3.8 compatibility fix)
+
 ## 0.6.0 : 2020-07-23
 
 - **Feature**: `lower` function introduced

@@ -1,7 +1,11 @@
 from typing import Union
 
 from duckql.functions.base import BaseFunction
-from typing_extensions import Literal
+
+try:
+    from typing import Literal
+except ImportError:
+    from typing_extensions import Literal
 
 from duckql.base import BaseType
 from duckql.properties.property import Property
