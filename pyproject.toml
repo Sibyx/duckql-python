@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "duckql-python"
-version = "0.7.0"
+version = "0.7.1"
 description = "JSON declarative SQL conversion library"
 authors = ["Jakub Dubec <jakub.dubec@gmail.com>"]
 license = "MIT"

@@ -1,4 +1,4 @@
-from pydantic import validator
+from exceptions import ParseError
 
 try:
     from typing import Literal
@@ -19,11 +19,15 @@ class Property(BaseType):
             'description': "Object representation of SQL column/property"
         }
 
-    @validator('name', pre=True)
-    def escape_name(cls, v):
-        return cls.escape(v)
-
     def to_sql(self) -> str:
+        if '->' in self.name:
+            bits = self.name.split('->')
+            if len(bits) != 2:
+                raise ParseError("duckQL doesn't support nested JSON lookups.")
+            self.name = f"{self.escape(bits[0].strip())} -> '{self.escape(bits[1].strip())}'"
+        else:
+            self.name = self.escape(self.name)
+
         sql = f"{self.name}"
 
         if self.alias is not None:

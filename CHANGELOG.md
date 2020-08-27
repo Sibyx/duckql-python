@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.1 : 2020-08-27
+
+- **Fix**: Use quotes in JSON column type keys in `Property`
+
 ## 0.7.0 : 2020-08-27
 
 - **Feature**: Now is possible to pass `Distinct` to `Count` to have `COUNT(DISTINCT property)` syntax in pSQL
