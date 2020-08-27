@@ -9,11 +9,12 @@ from ..functions.base import BaseFunction
 from ..properties import Constant
 from ..properties.property import Property
 from ..structures.cast_operator import CastOperator
+from ..structures.distinct import Distinct
 
 
 class Count(BaseFunction):
     obj: Literal['functions.Count'] = 'functions.Count'
-    property: Union[Property, BaseFunction, Constant, CastOperator]
+    property: Union[Property, BaseFunction, Constant, CastOperator, Distinct]
     alias: str = None
 
     def to_sql(self) -> str:

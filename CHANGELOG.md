@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.7.0 : 2020-08-27
+
+- **Feature**: Now is possible to pass `Distinct` to `Count` to have `COUNT(DISTINCT property)` syntax in pSQL
+- **Tests**: Test for
+
 ## 0.6.1 : 2020-08-04
 
 - **Fix**: Use native `typing.Literal` if possible (Python 3.8 compatibility fix)
