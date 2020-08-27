@@ -1,4 +1,4 @@
-from exceptions import ParseError
+from duckql.exceptions import ParseError
 
 try:
     from typing import Literal
