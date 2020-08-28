@@ -21,17 +21,17 @@ def test_obj(valid_instance: Property):
 
 def test_json_field():
     json_property = Property(
-        name='users.additional_data -> title'
+        name='users.additional_data ->> title'
     )
-    assert str(json_property) == "users.additional_data -> 'title'"
+    assert str(json_property) == "users.additional_data ->> 'title'"
 
 
 def test_json_field_parser():
     json_property = Property.parse_raw(
-        '{"obj": "properties.Property", "name": "users.additional_data -> title", "alias": "title"}'
+        '{"obj": "properties.Property", "name": "users.additional_data ->> title", "alias": "title"}'
     )
-    assert json_property.name == "users.additional_data -> title"
-    assert str(json_property) == "users.additional_data -> 'title' AS \"title\""
+    assert json_property.name == "users.additional_data ->> title"
+    assert str(json_property) == "users.additional_data ->> 'title' AS \"title\""
 
 
 def test_json_parse(valid_instance: Property):

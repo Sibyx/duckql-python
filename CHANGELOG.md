@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.2 : 2020-08-28
+
+- **Fix**: Use `->>` operator in JSON lookup instead of `->` (cast result as text)
+
 ## 0.7.1 : 2020-08-27
 
 - **Fix**: Use quotes in JSON column type keys in `Property`

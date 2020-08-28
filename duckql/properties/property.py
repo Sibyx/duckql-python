@@ -20,11 +20,11 @@ class Property(BaseType):
         }
 
     def to_sql(self) -> str:
-        if '->' in self.name:
-            bits = self.name.split('->')
+        if '->>' in self.name:
+            bits = self.name.split('->>')
             if len(bits) != 2:
-                raise ParseError("duckQL doesn't support nested JSON lookups.")
-            self.name = f"{self.escape(bits[0].strip())} -> '{self.escape(bits[1].strip())}'"
+                raise ParseError("duckQL doesn't support nested JSON lookups (yet).")
+            self.name = f"{self.escape(bits[0].strip())} ->> '{self.escape(bits[1].strip())}'"
         else:
             self.name = self.escape(self.name)
 
