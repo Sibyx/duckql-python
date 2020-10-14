@@ -1,5 +1,3 @@
-from duckql.exceptions import ParseError
-
 try:
     from typing import Literal
 except ImportError:
@@ -21,10 +19,20 @@ class Property(BaseType):
 
     def to_sql(self) -> str:
         if '->>' in self.name:
-            bits = self.name.split('->>')
-            if len(bits) != 2:
-                raise ParseError("duckQL doesn't support nested JSON lookups (yet).")
-            self.name = f"{self.escape(bits[0].strip())} ->> '{self.escape(bits[1].strip())}'"
+            bits = []
+
+            for i, bit in enumerate(self.name.split('->>')):
+                # Escape all nested attributes
+                bit = self.escape(bit).strip()
+
+                # Put all nested JSON fields into apostrophes
+                # Zero index is a column name, which we don't want to have in apostrophes
+                if i > 0:
+                    bit = f"'{bit}'"
+
+                bits.append(bit)
+
+            self.name = ' ->> '.join(bits)
         else:
             self.name = self.escape(self.name)
 

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.0 : 2020-10-14
+
+- **Feature**: Nested JSON fields
+
 ## 0.7.2 : 2020-08-28
 
 - **Fix**: Use `->>` operator in JSON lookup instead of `->` (cast result as text)
