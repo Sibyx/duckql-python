@@ -28,17 +28,17 @@ def test_json_field():
 
 def test_json_nested_field():
     json_property = Property(
-        name='users.additional_data ->> custom_fields ->> age'
+        name='users.additional_data --> custom_fields ->> age'
     )
-    assert str(json_property) == "users.additional_data ->> 'custom_fields' ->> 'age'"
+    assert str(json_property) == "users.additional_data --> 'custom_fields' ->> 'age'"
 
 
 def test_json_nested_field_parser():
     json_property = Property.parse_raw(
-        '{"obj": "properties.Property", "name": "users.additional_data ->> custom_fields ->> age", "alias": "age"}'
+        '{"obj": "properties.Property", "name": "users.additional_data --> custom_fields ->> age", "alias": "age"}'
     )
-    assert json_property.name == "users.additional_data ->> custom_fields ->> age"
-    assert str(json_property) == "users.additional_data ->> 'custom_fields' ->> 'age' AS \"age\""
+    assert json_property.name == "users.additional_data --> custom_fields ->> age"
+    assert str(json_property) == "users.additional_data --> 'custom_fields' ->> 'age' AS \"age\""
 
 
 def test_json_field_parser():

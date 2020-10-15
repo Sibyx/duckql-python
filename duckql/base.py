@@ -1,4 +1,5 @@
 import json
+import re
 from abc import ABC, abstractmethod
 from enum import Enum
 from typing import List
@@ -49,6 +50,11 @@ class BaseType(BaseModel, ABC):
 
     def __str__(self) -> str:
         return self.to_sql()
+
+    @classmethod
+    def multiple_separators_split(cls, separators, value):
+        regular_exp = '|'.join(map(re.escape, separators))
+        return re.split(regular_exp, value)
 
     @staticmethod
     def escape(value: str, ignore: List[str] = None) -> str:

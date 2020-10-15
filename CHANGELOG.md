@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.1 : 2020-10-15
+
+- **Fix**: Use `-->` operator in JSON lookup chaining in nested objects
+
 ## 0.8.0 : 2020-10-14
 
 - **Feature**: Nested JSON fields

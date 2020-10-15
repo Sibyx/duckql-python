@@ -18,25 +18,25 @@ class Property(BaseType):
         }
 
     def to_sql(self) -> str:
-        if '->>' in self.name:
-            bits = []
+        if '->>' in self.name or '-->' in self.name:
+            sql = ''
+            bits = self.multiple_separators_split(('-->', '->>'), self.name)
 
-            for i, bit in enumerate(self.name.split('->>')):
+            for i, bit in enumerate(bits):
                 # Escape all nested attributes
                 bit = self.escape(bit).strip()
 
                 # Put all nested JSON fields into apostrophes
                 # Zero index is a column name, which we don't want to have in apostrophes
-                if i > 0:
-                    bit = f"'{bit}'"
-
-                bits.append(bit)
-
-            self.name = ' ->> '.join(bits)
+                if i == 0:
+                    sql += bit
+                elif i == len(bits) - 1:
+                    sql += f" ->> '{bit}'"
+                else:
+                    sql += f" --> '{bit}'"
         else:
             self.name = self.escape(self.name)
-
-        sql = f"{self.name}"
+            sql = self.name
 
         if self.alias is not None:
             sql = f'{sql} AS "{self.alias}"'
