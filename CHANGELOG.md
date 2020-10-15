@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.2 : 2020-10-15
+
+- **Fix**: Use `->` instead of `-->`
+
 ## 0.8.1 : 2020-10-15
 
 - **Fix**: Use `-->` operator in JSON lookup chaining in nested objects

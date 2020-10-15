@@ -33,7 +33,7 @@ As of version 0.8.0 you can use `properties.Property` object for `PostgreSQL` JS
 ```json
 {
   "obj": "properties.Property",
-  "name": "users.additional_data --> metadata ->> age",
+  "name": "users.additional_data -> metadata ->> age",
   "alias": "age"
 }
 ```
@@ -44,7 +44,7 @@ As of version 0.8.0 you can use `properties.Property` object for `PostgreSQL` JS
 from duckql import  Property
 
 json_property = Property(
-    name='users.additional_data --> custom_fields ->> age',
+    name='users.additional_data -> custom_fields ->> age',
     alias='age'
 )
 ```
@@ -52,5 +52,5 @@ json_property = Property(
 **SQL**
 
 ```sql
-users.additional_data --> 'metadata' ->> 'age' AS "age"
+users.additional_data -> 'metadata' ->> 'age' AS "age"
 ```

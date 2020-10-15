@@ -18,9 +18,10 @@ class Property(BaseType):
         }
 
     def to_sql(self) -> str:
-        if '->>' in self.name or '-->' in self.name:
+        if '->>' in self.name or '->' in self.name:
             sql = ''
-            bits = self.multiple_separators_split(('-->', '->>'), self.name)
+            # WARNING: behaviour depends on params order in function multiple_separators_split
+            bits = self.multiple_separators_split(('->>', '->'), self.name)
 
             for i, bit in enumerate(bits):
                 # Escape all nested attributes
@@ -33,7 +34,7 @@ class Property(BaseType):
                 elif i == len(bits) - 1:
                     sql += f" ->> '{bit}'"
                 else:
-                    sql += f" --> '{bit}'"
+                    sql += f" -> '{bit}'"
         else:
             self.name = self.escape(self.name)
             sql = self.name
