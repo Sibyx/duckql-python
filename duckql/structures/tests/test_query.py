@@ -276,3 +276,22 @@ def test_having():
 
     assert clone == my_query
     assert str(clone) == sql
+
+
+def test_group_by_json():
+    my_query = Query(
+        entity='signatories',
+        properties=[
+            Property(name='signatories.additional_data->organisation->>name'),
+            Count(property=Property(name='signatories.additional_data->organisation->>name'))
+        ],
+        group=[
+            Property(name='signatories.additional_data->organisation->>name')
+        ]
+    )
+
+    sql = "SELECT signatories.additional_data -> 'organisation' ->> 'name', COUNT(signatories.additional_data -> " \
+          "'organisation' ->> 'name') FROM signatories GROUP BY signatories.additional_data -> 'organisation' ->> " \
+          "'name';"
+
+    assert str(my_query == sql)
