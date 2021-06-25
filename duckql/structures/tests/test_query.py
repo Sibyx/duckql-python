@@ -6,6 +6,7 @@ from duckql.functions import Now
 
 
 def test_simple():
+    Query.update_forward_refs()
     my_query = Query(
         entity='users',
         properties=[
@@ -104,6 +105,7 @@ def test_simple():
 
 
 def test_subquery():
+    Query.update_forward_refs()
     my_subquery = Query(
         entity='users',
         properties=[
@@ -163,6 +165,8 @@ def test_short_example():
 
 
 def test_example():
+    Query.update_forward_refs()
+    Operator.update_forward_refs()
     my_query = Query(
         entity='users',
         properties=[
@@ -218,6 +222,7 @@ def test_example():
 
 
 def test_having():
+    Query.update_forward_refs()
     my_query = Query(
         entity='organisations',
         properties=[
@@ -279,6 +284,7 @@ def test_having():
 
 
 def test_group_by_json():
+    Query.update_forward_refs()
     my_query = Query(
         entity='signatories',
         properties=[

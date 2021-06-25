@@ -42,7 +42,7 @@ class Operator(BaseType):
 
     obj: Literal['structures.Operator'] = 'structures.Operator'
     operation: Operation
-    properties: List[Union[BaseFunction, Constant, Property, Boolean, Comparision, Interval]]
+    properties: List[Union[BaseFunction, Constant, Property, Boolean, Comparision, Interval, "Operator"]]
     alias: str = None
 
     def to_sql(self) -> str:

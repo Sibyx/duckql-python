@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.9.0 : 2021-06-25
+
+- **Fix**: Fixed nested conditions (`Operator` can contain another `Operator`)
+- **Change**: Dropped Python 3.6 support
+
 ## 0.8.2 : 2020-10-15
 
 - **Fix**: Use `->` instead of `-->`
