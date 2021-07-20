@@ -1,0 +1,231 @@
+{
+  "obj": "structures.Query",
+  "entity": "donations",
+  "properties": [
+    {
+      "obj": "properties.Property",
+      "name": "donations.periodicity",
+      "alias": "donations__periodicity"
+    },
+    {
+      "obj": "properties.Property",
+      "name": "donations.id",
+      "alias": "donations__id"
+    },
+    {
+      "obj": "properties.Property",
+      "name": "campaigns__organisations__fk.id",
+      "alias": "organisations__id"
+    },
+    {
+      "obj": "properties.Property",
+      "name": "campaigns__organisations__fk.name",
+      "alias": "organisations__name"
+    },
+    {
+      "obj": "properties.Property",
+      "name": "donations__campaigns__fk.note",
+      "alias": "campaigns__note"
+    },
+    {
+      "obj": "properties.Property",
+      "name": "donations__donors__fk.name",
+      "alias": "donors__name"
+    },
+    {
+      "obj": "properties.Property",
+      "name": "donations__donors__fk.surname",
+      "alias": "donors__surname"
+    },
+    {
+      "obj": "properties.Property",
+      "name": "donations__payments__fk.value",
+      "alias": "payments__value"
+    },
+    {
+      "obj": "properties.Property",
+      "name": "donations__payments__fk.happened_at",
+      "alias": "payments__happened_at"
+    },
+    {
+      "obj": "properties.Property",
+      "name": "donations__payments__fk.status",
+      "alias": "payments__status"
+    },
+    {
+      "obj": "properties.Property",
+      "name": "donations__payments__fk.variable_symbol",
+      "alias": "payments__variable_symbol"
+    }
+  ],
+  "conditions": {
+    "obj": "structures.Operator",
+    "operation": "and",
+    "properties": [
+      {
+        "obj": "structures.Comparision",
+        "properties": [
+          {
+            "obj": "properties.Property",
+            "name": "donations__payments__fk.status"
+          },
+          {
+            "obj": "properties.Array",
+            "values": [
+              {
+                "obj": "properties.Constant",
+                "value": "successful"
+              }
+            ]
+          }
+        ],
+        "operation": "in"
+      },
+      {
+        "obj": "structures.Operator",
+        "operation": "or",
+        "properties": [
+          {
+            "obj": "structures.Comparision",
+            "properties": [
+              {
+                "obj": "properties.Property",
+                "name": "donations__payments__fk.value"
+              },
+              {
+                "obj": "properties.Constant",
+                "value": 0.01
+              }
+            ],
+            "operation": "eq"
+          },
+          {
+            "obj": "structures.Comparision",
+            "properties": [
+              {
+                "obj": "properties.Property",
+                "name": "donations__payments__fk.value"
+              },
+              {
+                "obj": "properties.Constant",
+                "value": 1
+              }
+            ],
+            "operation": "eq"
+          },
+          {
+            "obj": "structures.Comparision",
+            "properties": [
+              {
+                "obj": "properties.Property",
+                "name": "donations__payments__fk.value"
+              },
+              {
+                "obj": "properties.Constant",
+                "value": 5
+              }
+            ],
+            "operation": "eq"
+          }
+        ]
+      }
+    ]
+  },
+  "order": [
+    {
+      "obj": "structures.Order",
+      "property": {
+        "obj": "properties.Property",
+        "name": "payments__value"
+      },
+      "kind": "ASC"
+    }
+  ],
+  "limit": {
+    "obj": "structures.Limit",
+    "limit": 10,
+    "offset": 0
+  },
+  "joins": [
+    {
+      "obj": "structures.Join",
+      "entity": "donors",
+      "type": "left",
+      "on": {
+        "obj": "structures.Comparision",
+        "properties": [
+          {
+            "obj": "properties.Property",
+            "name": "donations__donors__fk.id"
+          },
+          {
+            "obj": "properties.Property",
+            "name": "donations.donor_id"
+          }
+        ],
+        "operation": "eq"
+      },
+      "alias": "donations__donors__fk"
+    },
+    {
+      "obj": "structures.Join",
+      "entity": "campaigns",
+      "type": "left",
+      "on": {
+        "obj": "structures.Comparision",
+        "properties": [
+          {
+            "obj": "properties.Property",
+            "name": "donations__campaigns__fk.id"
+          },
+          {
+            "obj": "properties.Property",
+            "name": "donations.campaign_id"
+          }
+        ],
+        "operation": "eq"
+      },
+      "alias": "donations__campaigns__fk"
+    },
+    {
+      "obj": "structures.Join",
+      "entity": "payments",
+      "type": "right",
+      "on": {
+        "obj": "structures.Comparision",
+        "properties": [
+          {
+            "obj": "properties.Property",
+            "name": "donations.id"
+          },
+          {
+            "obj": "properties.Property",
+            "name": "donations__payments__fk.donation_id"
+          }
+        ],
+        "operation": "eq"
+      },
+      "alias": "donations__payments__fk"
+    },
+    {
+      "obj": "structures.Join",
+      "entity": "organisations",
+      "type": "left",
+      "on": {
+        "obj": "structures.Comparision",
+        "properties": [
+          {
+            "obj": "properties.Property",
+            "name": "campaigns__organisations__fk.id"
+          },
+          {
+            "obj": "properties.Property",
+            "name": "donations__campaigns__fk.organisation_id"
+          }
+        ],
+        "operation": "eq"
+      },
+      "alias": "campaigns__organisations__fk"
+    }
+  ]
+}

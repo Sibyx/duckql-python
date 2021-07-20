@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.1 : 2021-07-20
+
+- **Fix**: Fixed problem with multiple properites in operations (I had to remove comparison property check)
+
 ## 0.9.0 : 2021-06-25
 
 - **Fix**: Fixed nested conditions (`Operator` can contain another `Operator`)

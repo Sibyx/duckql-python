@@ -1,14 +1,11 @@
 from enum import Enum
 from typing import List
 
-from pydantic import validator
-
 try:
     from typing import Literal
 except ImportError:
     from typing_extensions import Literal
 
-from duckql.exceptions import ParseError
 from duckql.base import BaseType
 from duckql.properties.array import Array
 
@@ -58,13 +55,6 @@ class Comparision(BaseType):
     obj: Literal['structures.Comparision'] = 'structures.Comparision'
     properties: List[BaseType]
     operation: Operation
-
-    @validator('properties', pre=True)
-    def check_number_of_properties(cls, v):
-        if len(v) != 2:
-            raise ParseError("Comparison requires exactly two attributes!")
-
-        return v
 
     def to_sql(self) -> str:
         sql = f"{self.properties[0]} {self.operation}"
