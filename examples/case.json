@@ -1,0 +1,119 @@
+{
+  "obj": "structures.Query",
+  "entity": "warehouse_logs",
+  "properties": [
+    {
+      "obj": "properties.Property",
+      "name": "units.name",
+      "alias": "units__name"
+    },
+    {
+      "obj": "functions.Sum",
+      "property": {
+        "obj": "structures.Case",
+        "conditions": [
+          {
+            "when": {
+              "obj": "structures.Comparision",
+              "operation": "eq",
+              "properties": [
+                {
+                  "obj": "properties.Property",
+                  "name": "warehouse_logs.direction"
+                },
+                {
+                  "obj": "properties.Constant",
+                  "value": "out"
+                }
+              ]
+            },
+            "then": {
+              "obj": "structures.Operator",
+              "operation": "multiplication",
+              "properties": [
+                {
+                  "obj": "properties.Property",
+                  "name": "warehouse_logs.volume"
+                },
+                {
+                  "obj": "properties.Constant",
+                  "value": "-1"
+                }
+              ]
+            }
+          }
+        ],
+        "alternative": {
+          "obj": "properties.Property",
+          "name": "warehouse_logs.volume"
+        }
+      },
+      "alias": "absolute_state"
+    }
+  ],
+  "joins": [
+    {
+      "obj": "structures.Join",
+      "entity": "materials",
+      "type": "inner",
+      "on": {
+        "obj": "structures.Comparision",
+        "operation": "eq",
+        "properties": [
+          {
+            "obj": "properties.Property",
+            "name": "materials.id"
+          },
+          {
+            "obj": "properties.Property",
+            "name": "warehouse_logs.material_id"
+          }
+        ]
+      }
+    },
+    {
+      "obj": "structures.Join",
+      "entity": "units",
+      "type": "inner",
+      "on": {
+        "obj": "structures.Comparision",
+        "operation": "eq",
+        "properties": [
+          {
+            "obj": "properties.Property",
+            "name": "units.id"
+          },
+          {
+            "obj": "properties.Property",
+            "name": "materials.unit_id"
+          }
+        ]
+      }
+    },
+    {
+      "obj": "structures.Join",
+      "entity": "warehouse_log_purposes",
+      "type": "inner",
+      "on": {
+        "obj": "structures.Comparision",
+        "operation": "eq",
+        "properties": [
+          {
+            "obj": "properties.Property",
+            "name": "warehouse_log_purposes.id"
+          },
+          {
+            "obj": "properties.Property",
+            "name": "warehouse_logs.purpose_id"
+          }
+        ]
+      }
+    }
+  ],
+  "group": [
+    {
+      "obj": "properties.Property",
+      "name": "units.id"
+    }
+  ]
+}

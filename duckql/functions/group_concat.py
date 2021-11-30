@@ -9,11 +9,12 @@ from ..functions.base import BaseFunction
 from ..properties.constant import Constant
 from ..properties.property import Property
 from ..structures.cast_operator import CastOperator
+from ..structures.case import Case
 
 
 class GroupConcat(BaseFunction):
     obj: Literal['functions.GroupConcat'] = 'functions.GroupConcat'
-    property: Union[Constant, Property, BaseFunction, CastOperator]
+    property: Union[Constant, Property, BaseFunction, CastOperator, Case]
     alias: str = None
 
     def to_sql(self) -> str:

@@ -11,11 +11,12 @@ from ..functions.base import BaseFunction
 from ..properties.property import Property
 from ..properties.constant import Constant
 from ..structures.cast_operator import CastOperator
+from ..structures.case import Case
 
 
 class ToDate(BaseFunction):
     obj: Literal['functions.ToDate'] = 'functions.ToDate'
-    property: Union[Property, Constant, BaseFunction, CastOperator]
+    property: Union[Property, Constant, BaseFunction, CastOperator, Case]
     format: str
     alias: str = None
 

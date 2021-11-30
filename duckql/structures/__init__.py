@@ -8,6 +8,7 @@ from .comparision import Comparision
 from .between import Between
 from .operator import Operator
 from .cast_operator import CastOperator
+from .case import Case
 
 __all__ = [
     "Join",
@@ -19,5 +20,6 @@ __all__ = [
     "Comparision",
     "Between",
     "Operator",
-    "CastOperator"
+    "CastOperator",
+    "Case"
 ]

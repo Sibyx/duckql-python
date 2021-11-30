@@ -9,11 +9,12 @@ from ..functions.base import BaseFunction
 from ..properties.property import Property
 from ..properties.constant import Constant
 from ..structures.cast_operator import CastOperator
+from ..structures.case import Case
 
 
 class Weekday(BaseFunction):
     obj: Literal['functions.Weekday'] = 'functions.Weekday'
-    property: Union[Property, BaseFunction, Constant, CastOperator]
+    property: Union[Property, BaseFunction, Constant, CastOperator, Case]
     alias: str = None
 
     def to_sql(self) -> str:

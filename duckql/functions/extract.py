@@ -11,6 +11,7 @@ from ..properties.constant import Constant
 from ..properties.property import Property
 from ..structures.cast_operator import CastOperator
 from ..structures.interval import Interval
+from ..structures.case import Case
 
 
 class Extract(BaseFunction):
@@ -38,7 +39,7 @@ class Extract(BaseFunction):
         YEAR = 'year'
 
     obj: Literal['functions.Extract'] = 'functions.Extract'
-    property: Union[Constant, Property, BaseFunction, Interval, CastOperator]
+    property: Union[Constant, Property, BaseFunction, Interval, CastOperator, Case]
     unit: Unit
     alias: str = None
 

@@ -12,11 +12,12 @@ from ..functions.base import BaseFunction
 from ..properties import Array
 from ..properties.property import Property
 from ..structures.cast_operator import CastOperator
+from ..structures.case import Case
 
 
 class StringAgg(BaseFunction):
     obj: Literal['functions.StringAgg'] = 'functions.StringAgg'
-    property: Union[Property, BaseFunction, Array, CastOperator, Distinct]
+    property: Union[Property, BaseFunction, Array, CastOperator, Distinct, Case]
     separator: str
     alias: str = None
 

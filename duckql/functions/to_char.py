@@ -12,11 +12,12 @@ from ..properties.property import Property
 from ..properties.constant import Constant
 from ..structures.cast_operator import CastOperator
 from ..structures.interval import Interval
+from ..structures.case import Case
 
 
 class ToChar(BaseFunction):
     obj: Literal['functions.ToChar'] = 'functions.ToChar'
-    property: Union[Property, Constant, BaseFunction, CastOperator, Interval]
+    property: Union[Property, Constant, BaseFunction, CastOperator, Interval, Case]
     format: str
     alias: str = None
 

@@ -10,11 +10,12 @@ from ..properties.constant import Constant
 from ..properties.property import Property
 from ..structures.cast_operator import CastOperator
 from ..structures.interval import Interval
+from ..structures.case import Case
 
 
 class DateSub(BaseFunction):
     obj: Literal['functions.DateSub'] = 'functions.DateSub'
-    property: Union[Constant, Property, BaseFunction, CastOperator]
+    property: Union[Constant, Property, BaseFunction, CastOperator, Case]
     interval: Interval
     alias: str = None
 

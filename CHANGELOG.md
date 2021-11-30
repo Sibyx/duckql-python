@@ -1,8 +1,12 @@
 # Changelog
 
+## 0.10.0 : 2021-11-30
+
+- **Feature**: `Case` introduced (without docs, there was no time, sry, let's call it Easter Egg for a while)
+
 ## 0.9.1 : 2021-07-20
 
-- **Fix**: Fixed problem with multiple properites in operations (I had to remove comparison property check)
+- **Fix**: Fixed problem with multiple properties in operations (I had to remove comparison property check)
 
 ## 0.9.0 : 2021-06-25
 

@@ -9,11 +9,12 @@ from .base import BaseFunction
 from ..properties import Constant
 from ..properties.property import Property
 from ..structures.cast_operator import CastOperator
+from ..structures.case import Case
 
 
 class InitCap(BaseFunction):
     obj: Literal['functions.InitCap'] = 'functions.InitCap'
-    property: Union[Property, BaseFunction, Constant, CastOperator]
+    property: Union[Property, BaseFunction, Constant, CastOperator, Case]
     alias: str = None
 
     def to_sql(self) -> str:

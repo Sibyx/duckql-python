@@ -8,11 +8,12 @@ except ImportError:
 from ..functions.base import BaseFunction
 from ..properties.property import Property
 from ..structures.cast_operator import CastOperator
+from ..structures.case import Case
 
 
 class Max(BaseFunction):
     obj: Literal['functions.Max'] = 'functions.Max'
-    property: Union[Property, BaseFunction, CastOperator]
+    property: Union[Property, BaseFunction, CastOperator, Case]
     alias: str = None
 
     def to_sql(self) -> str:
@@ -26,7 +27,7 @@ class Max(BaseFunction):
 
 class Min(BaseFunction):
     obj: Literal['functions.Min'] = 'functions.Min'
-    property: Union[Property, BaseFunction, CastOperator]
+    property: Union[Property, BaseFunction, CastOperator, Case]
     alias: str = None
 
     def to_sql(self) -> str:
