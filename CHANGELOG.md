@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.11.0 : 2021-12-10
+
+- **Feature**: More benevolent type nesting
+
 ## 0.10.0 : 2021-11-30
 
 - **Feature**: `Case` introduced (without docs, there was no time, sry, let's call it Easter Egg for a while)

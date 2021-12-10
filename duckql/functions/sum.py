@@ -9,11 +9,12 @@ from ..functions.base import BaseFunction
 from ..properties.property import Property
 from ..structures.cast_operator import CastOperator
 from ..structures.case import Case
+from ..structures.operator import Operator
 
 
 class Sum(BaseFunction):
     obj: Literal['functions.Sum'] = 'functions.Sum'
-    property: Union[Property, BaseFunction, CastOperator, Case]
+    property: Union[Property, BaseFunction, CastOperator, Case, "Operator"]
     alias: str = None
 
     def to_sql(self) -> str:

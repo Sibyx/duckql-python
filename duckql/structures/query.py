@@ -26,7 +26,7 @@ class Query(BaseType):
 
     obj: Literal['structures.Query'] = 'structures.Query'
     entity: Union[str, 'Query']
-    properties: List[Union[BaseFunction, Property, Distinct, CastOperator, Case]]
+    properties: List[Union[BaseFunction, Property, Distinct, CastOperator, Case, Operator]]
     joins: List[Join] = []
     conditions: Union[Operator, Comparision] = None
     having: Union[Operator, Comparision] = None

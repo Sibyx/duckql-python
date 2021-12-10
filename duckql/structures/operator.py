@@ -1,7 +1,5 @@
 from enum import Enum
-from typing import List, Union
-
-from duckql.functions.base import BaseFunction
+from typing import List
 
 try:
     from typing import Literal
@@ -9,11 +7,6 @@ except ImportError:
     from typing_extensions import Literal
 
 from ..base import BaseType
-from ..properties.constant import Constant
-from ..properties.property import Property
-from ..properties.boolean import Boolean
-from ..structures.interval import Interval
-from .comparision import Comparision
 
 
 class Operator(BaseType):
@@ -42,7 +35,7 @@ class Operator(BaseType):
 
     obj: Literal['structures.Operator'] = 'structures.Operator'
     operation: Operation
-    properties: List[Union[BaseFunction, Constant, Property, Boolean, Comparision, Interval, "Operator"]]
+    properties: List[BaseType]
     alias: str = None
 
     def to_sql(self) -> str:
