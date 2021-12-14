@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.11.1 : 2021-12-14
+
+- **Change**: Ability to cast to UUID
+
 ## 0.11.0 : 2021-12-10
 
 - **Feature**: More benevolent type nesting

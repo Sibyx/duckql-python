@@ -22,6 +22,7 @@ class CastOperator(BaseType):
         CHAR = 'char'
         VARCHAR = 'varchar'
         TEXT = 'text'
+        UUID = 'uuid'
 
         # Integers
         SMALLINT = 'smallint'
