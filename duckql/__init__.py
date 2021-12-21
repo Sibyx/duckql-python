@@ -14,6 +14,8 @@ from .functions import Min
 from .functions import StringAgg
 from .functions import Sum
 from .functions import Weekday
+from .functions import FirstValue
+from .functions import ArrayAgg
 
 # Properties
 from .properties import Array
@@ -68,5 +70,7 @@ __all__ = [
     'Operator',
     'Order',
     'Query',
-    'QueryFactory'
+    'QueryFactory',
+    'FirstValue',
+    'ArrayAgg'
 ]

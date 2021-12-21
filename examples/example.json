@@ -1,0 +1,449 @@
+{
+  "obj": "structures.Query",
+  "group": [
+    {
+      "obj": "properties.Property",
+      "name": "materials.id"
+    },
+    {
+      "obj": "properties.Property",
+      "name": "warehouse_log_purposes.code"
+    }
+  ],
+  "joins": [
+    {
+      "on": {
+        "obj": "structures.Comparision",
+        "operation": "eq",
+        "properties": [
+          {
+            "obj": "properties.Property",
+            "name": "materials.id"
+          },
+          {
+            "obj": "properties.Property",
+            "name": "warehouse_logs.material_id"
+          }
+        ]
+      },
+      "obj": "structures.Join",
+      "type": "inner",
+      "entity": "materials"
+    },
+    {
+      "on": {
+        "obj": "structures.Comparision",
+        "operation": "eq",
+        "properties": [
+          {
+            "obj": "properties.Property",
+            "name": "units.id"
+          },
+          {
+            "obj": "properties.Property",
+            "name": "materials.unit_id"
+          }
+        ]
+      },
+      "obj": "structures.Join",
+      "type": "inner",
+      "entity": "units"
+    },
+    {
+      "on": {
+        "obj": "structures.Comparision",
+        "operation": "eq",
+        "properties": [
+          {
+            "obj": "properties.Property",
+            "name": "warehouse_log_purposes.id"
+          },
+          {
+            "obj": "properties.Property",
+            "name": "warehouse_logs.purpose_id"
+          }
+        ]
+      },
+      "obj": "structures.Join",
+      "type": "inner",
+      "entity": "warehouse_log_purposes"
+    }
+  ],
+  "entity": "warehouse_logs",
+  "properties": [
+    {
+      "obj": "properties.Property",
+      "name": "materials.name",
+      "alias": "materials__name"
+    },
+    {
+      "obj": "functions.ArrayAgg",
+      "alias": "original_state",
+      "property": {
+        "obj": "properties.Property",
+        "name": "warehouse_logs.original_state_material_purpose_code"
+      },
+      "order": [
+        {
+          "obj": "structures.Order",
+          "property": {
+            "obj": "properties.Property",
+            "name": "warehouse_logs.created_at"
+          }
+        }
+      ],
+      "position": 1
+    },
+    {
+      "obj": "functions.Sum",
+      "alias": "volume_input",
+      "property": {
+        "obj": "structures.Case",
+        "conditions": [
+          {
+            "then": {
+              "obj": "properties.Property",
+              "name": "warehouse_logs.volume"
+            },
+            "when": {
+              "obj": "structures.Comparision",
+              "operation": "eq",
+              "properties": [
+                {
+                  "obj": "properties.Property",
+                  "name": "warehouse_logs.direction"
+                },
+                {
+                  "obj": "properties.Constant",
+                  "value": "in"
+                }
+              ]
+            }
+          }
+        ],
+        "alternative": {
+          "obj": "properties.Constant",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "obj": "functions.Sum",
+      "alias": "volume_output",
+      "property": {
+        "obj": "structures.Case",
+        "conditions": [
+          {
+            "then": {
+              "obj": "properties.Property",
+              "name": "warehouse_logs.volume"
+            },
+            "when": {
+              "obj": "structures.Comparision",
+              "operation": "eq",
+              "properties": [
+                {
+                  "obj": "properties.Property",
+                  "name": "warehouse_logs.direction"
+                },
+                {
+                  "obj": "properties.Constant",
+                  "value": "out"
+                }
+              ]
+            }
+          }
+        ],
+        "alternative": {
+          "obj": "properties.Constant",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "obj": "structures.Operator",
+      "alias": "state",
+      "operation": "addition",
+      "properties": [
+        {
+          "obj": "functions.ArrayAgg",
+          "property": {
+            "obj": "properties.Property",
+            "name": "warehouse_logs.original_state_material_purpose_code"
+          },
+          "order": [
+            {
+              "obj": "structures.Order",
+              "property": {
+                "obj": "properties.Property",
+                "name": "warehouse_logs.created_at"
+              }
+            }
+          ],
+          "position": 1
+        },
+        {
+          "obj": "functions.Sum",
+          "property": {
+            "obj": "structures.Case",
+            "conditions": [
+              {
+                "then": {
+                  "obj": "properties.Property",
+                  "name": "warehouse_logs.volume"
+                },
+                "when": {
+                  "obj": "structures.Comparision",
+                  "operation": "eq",
+                  "properties": [
+                    {
+                      "obj": "properties.Property",
+                      "name": "warehouse_logs.direction"
+                    },
+                    {
+                      "obj": "properties.Constant",
+                      "value": "in"
+                    }
+                  ]
+                }
+              }
+            ],
+            "alternative": {
+              "obj": "properties.Constant",
+              "value": "0"
+            }
+          }
+        },
+        {
+          "obj": "functions.Sum",
+          "property": {
+            "obj": "structures.Case",
+            "conditions": [
+              {
+                "then": {
+                  "obj": "structures.Operator",
+                  "operation": "multiplication",
+                  "properties": [
+                    {
+                      "obj": "properties.Property",
+                      "name": "warehouse_logs.volume"
+                    },
+                    {
+                      "obj": "properties.Constant",
+                      "value": "-1"
+                    }
+                  ]
+                },
+                "when": {
+                  "obj": "structures.Comparision",
+                  "operation": "eq",
+                  "properties": [
+                    {
+                      "obj": "properties.Property",
+                      "name": "warehouse_logs.direction"
+                    },
+                    {
+                      "obj": "properties.Constant",
+                      "value": "out"
+                    }
+                  ]
+                }
+              }
+            ],
+            "alternative": {
+              "obj": "properties.Constant",
+              "value": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "obj": "functions.Sum",
+      "alias": "volume_input_price",
+      "property": {
+        "obj": "structures.Operator",
+        "operation": "multiplication",
+        "properties": [
+          {
+            "obj": "structures.Case",
+            "conditions": [
+              {
+                "then": {
+                  "obj": "properties.Property",
+                  "name": "warehouse_logs.volume"
+                },
+                "when": {
+                  "obj": "structures.Comparision",
+                  "operation": "eq",
+                  "properties": [
+                    {
+                      "obj": "properties.Property",
+                      "name": "warehouse_logs.direction"
+                    },
+                    {
+                      "obj": "properties.Constant",
+                      "value": "in"
+                    }
+                  ]
+                }
+              }
+            ],
+            "alternative": {
+              "obj": "properties.Constant",
+              "value": "0"
+            }
+          },
+          {
+            "obj": "properties.Property",
+            "name": "warehouse_logs.price_per_unit"
+          }
+        ]
+      }
+    },
+    {
+      "obj": "functions.Sum",
+      "alias": "volume_output_price",
+      "property": {
+        "obj": "structures.Operator",
+        "operation": "multiplication",
+        "properties": [
+          {
+            "obj": "structures.Case",
+            "conditions": [
+              {
+                "then": {
+                  "obj": "properties.Property",
+                  "name": "warehouse_logs.volume"
+                },
+                "when": {
+                  "obj": "structures.Comparision",
+                  "operation": "eq",
+                  "properties": [
+                    {
+                      "obj": "properties.Property",
+                      "name": "warehouse_logs.direction"
+                    },
+                    {
+                      "obj": "properties.Constant",
+                      "value": "out"
+                    }
+                  ]
+                }
+              }
+            ],
+            "alternative": {
+              "obj": "properties.Constant",
+              "value": "0"
+            }
+          },
+          {
+            "obj": "properties.Property",
+            "name": "warehouse_logs.price_per_unit"
+          }
+        ]
+      }
+    },
+    {
+      "obj": "structures.Operator",
+      "alias": "state_price",
+      "operation": "addition",
+      "properties": [
+        {
+          "obj": "functions.Sum",
+          "property": {
+            "obj": "structures.Operator",
+            "operation": "multiplication",
+            "properties": [
+              {
+                "obj": "structures.Case",
+                "conditions": [
+                  {
+                    "then": {
+                      "obj": "properties.Property",
+                      "name": "warehouse_logs.volume"
+                    },
+                    "when": {
+                      "obj": "structures.Comparision",
+                      "operation": "eq",
+                      "properties": [
+                        {
+                          "obj": "properties.Property",
+                          "name": "warehouse_logs.direction"
+                        },
+                        {
+                          "obj": "properties.Constant",
+                          "value": "in"
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "alternative": {
+                  "obj": "properties.Constant",
+                  "value": "0"
+                }
+              },
+              {
+                "obj": "properties.Property",
+                "name": "warehouse_logs.price_per_unit"
+              }
+            ]
+          }
+        },
+        {
+          "obj": "functions.Sum",
+          "property": {
+            "obj": "structures.Operator",
+            "operation": "multiplication",
+            "properties": [
+              {
+                "obj": "structures.Case",
+                "conditions": [
+                  {
+                    "then": {
+                      "obj": "structures.Operator",
+                      "operation": "multiplication",
+                      "properties": [
+                        {
+                          "obj": "properties.Property",
+                          "name": "warehouse_logs.volume"
+                        },
+                        {
+                          "obj": "properties.Constant",
+                          "value": "-1"
+                        }
+                      ]
+                    },
+                    "when": {
+                      "obj": "structures.Comparision",
+                      "operation": "eq",
+                      "properties": [
+                        {
+                          "obj": "properties.Property",
+                          "name": "warehouse_logs.direction"
+                        },
+                        {
+                          "obj": "properties.Constant",
+                          "value": "out"
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "alternative": {
+                  "obj": "properties.Constant",
+                  "value": "0"
+                }
+              },
+              {
+                "obj": "properties.Property",
+                "name": "warehouse_logs.price_per_unit"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

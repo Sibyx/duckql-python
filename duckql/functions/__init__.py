@@ -19,6 +19,8 @@ from .unaccent import Unaccent
 from .lower import Lower
 from .upper import Upper
 from .initcap import InitCap
+from .first_value import FirstValue
+from .array_agg import ArrayAgg
 
 __all__ = [
     "Avg",
@@ -42,5 +44,7 @@ __all__ = [
     "Unaccent",
     "Lower",
     "Upper",
-    "InitCap"
+    "InitCap",
+    "FirstValue",
+    "ArrayAgg"
 ]

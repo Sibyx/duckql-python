@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.12.0 : 2021-12-21
+
+- **Feature**: `FirstValue` window function introduced
+- **Feature**: Positional `ArrayAgg` introduced
+
 ## 0.11.1 : 2021-12-14
 
 - **Change**: Ability to cast to UUID
