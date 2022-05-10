@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.12.1 : 2022-05-10
+
+- **Fixed**: Corrected cast of JSON fields
+
 ## 0.12.0 : 2021-12-21
 
 - **Feature**: `FirstValue` window function introduced

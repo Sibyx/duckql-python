@@ -17,6 +17,9 @@ class Property(BaseType):
             'description': "Object representation of SQL column/property"
         }
 
+    def is_json_field(self) -> bool:
+        return '->>' in self.name or '->' in self.name
+
     def to_sql(self) -> str:
         if '->>' in self.name or '->' in self.name:
             sql = ''

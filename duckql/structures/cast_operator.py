@@ -40,7 +40,10 @@ class CastOperator(BaseType):
     alias: str = None
 
     def to_sql(self) -> str:
-        sql = f"{self.property}::{self.to.value}"
+        if isinstance(self.property, Property) and self.property.is_json_field():
+            sql = f"({self.property})::{self.to.value}"
+        else:
+            sql = f"{self.property}::{self.to.value}"
 
         if self.alias is not None:
             sql = f"{sql} AS {self.alias}"

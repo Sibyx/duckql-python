@@ -10,3 +10,13 @@ def test_simple():
     )
 
     assert str(my_structure) == 'users.age::varchar AS age_as_string'
+
+
+def test_json_field():
+    my_structure = CastOperator(
+        property=Property(name='organisations.statistics->campaigns_count'),
+        to=CastOperator.DataType.INT,
+        alias='campaigns_count'
+    )
+
+    assert str(my_structure) == '(organisations.statistics ->> \'campaigns_count\')::int AS campaigns_count'
