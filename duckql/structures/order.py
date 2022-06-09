@@ -2,6 +2,7 @@ from enum import Enum
 from typing import Union
 
 from duckql.functions.base import BaseFunction
+from ..structures.cast_operator import CastOperator
 
 try:
     from typing import Literal
@@ -18,7 +19,7 @@ class Order(BaseType):
         DESC = 'DESC'
 
     obj: Literal['structures.Order'] = 'structures.Order'
-    property: Union[Property, BaseFunction]
+    property: Union[Property, BaseFunction, CastOperator]
     kind: Direction = Direction.ASC
 
     def to_sql(self) -> str:

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.13.0  : 2022-06-09
+
+- **Added**: Ability to use casting for `ORDER BY` property
+
 ## 0.12.1 : 2022-05-10
 
 - **Fixed**: Corrected cast of JSON fields

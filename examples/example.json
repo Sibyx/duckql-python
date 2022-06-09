@@ -1,449 +1,252 @@
 {
-  "obj": "structures.Query",
-  "group": [
-    {
-      "obj": "properties.Property",
-      "name": "materials.id"
-    },
-    {
-      "obj": "properties.Property",
-      "name": "warehouse_log_purposes.code"
-    }
-  ],
-  "joins": [
-    {
-      "on": {
-        "obj": "structures.Comparision",
-        "operation": "eq",
-        "properties": [
-          {
-            "obj": "properties.Property",
-            "name": "materials.id"
-          },
-          {
-            "obj": "properties.Property",
-            "name": "warehouse_logs.material_id"
-          }
-        ]
-      },
-      "obj": "structures.Join",
-      "type": "inner",
-      "entity": "materials"
-    },
-    {
-      "on": {
-        "obj": "structures.Comparision",
-        "operation": "eq",
-        "properties": [
-          {
-            "obj": "properties.Property",
-            "name": "units.id"
-          },
-          {
-            "obj": "properties.Property",
-            "name": "materials.unit_id"
-          }
-        ]
-      },
-      "obj": "structures.Join",
-      "type": "inner",
-      "entity": "units"
-    },
-    {
-      "on": {
-        "obj": "structures.Comparision",
-        "operation": "eq",
-        "properties": [
-          {
-            "obj": "properties.Property",
-            "name": "warehouse_log_purposes.id"
-          },
-          {
-            "obj": "properties.Property",
-            "name": "warehouse_logs.purpose_id"
-          }
-        ]
-      },
-      "obj": "structures.Join",
-      "type": "inner",
-      "entity": "warehouse_log_purposes"
-    }
-  ],
-  "entity": "warehouse_logs",
-  "properties": [
-    {
-      "obj": "properties.Property",
-      "name": "materials.name",
-      "alias": "materials__name"
-    },
-    {
-      "obj": "functions.ArrayAgg",
-      "alias": "original_state",
-      "property": {
+    "obj": "structures.Query",
+    "entity": "donations",
+    "properties": [
+      {
         "obj": "properties.Property",
-        "name": "warehouse_logs.original_state_material_purpose_code"
+        "name": "donations.periodicity",
+        "alias": "donations__periodicity"
       },
-      "order": [
+      {
+        "obj": "properties.Property",
+        "name": "donations.id",
+        "alias": "donations__id"
+      },
+      {
+        "obj": "properties.Property",
+        "name": "campaigns__organisations__fk.id",
+        "alias": "organisations__id"
+      },
+      {
+        "obj": "properties.Property",
+        "name": "campaigns__organisations__fk.name",
+        "alias": "organisations__name"
+      },
+      {
+        "obj": "properties.Property",
+        "name": "donations__campaigns__fk.note",
+        "alias": "campaigns__note"
+      },
+      {
+        "obj": "properties.Property",
+        "name": "donations__donors__fk.name",
+        "alias": "donors__name"
+      },
+      {
+        "obj": "properties.Property",
+        "name": "donations__donors__fk.surname",
+        "alias": "donors__surname"
+      },
+      {
+        "obj": "properties.Property",
+        "name": "donations__payments__fk.value",
+        "alias": "payments__value"
+      },
+      {
+        "obj": "properties.Property",
+        "name": "donations__payments__fk.status",
+        "alias": "payments__status"
+      },
+      {
+        "obj": "properties.Property",
+        "name": "donations__payments__fk.happened_at",
+        "alias": "payments__happened_at"
+      },
+      {
+        "obj": "properties.Property",
+        "name": "donations__payments__fk.variable_symbol",
+        "alias": "payments__variable_symbol"
+      },
+      {
+        "obj": "properties.Property",
+        "name": "donations__donors__fk.email",
+        "alias": "donors__email"
+      },
+      {
+        "obj": "properties.Property",
+        "name": "donations__payment_methods__fk.processor",
+        "alias": "payment_methods__processor"
+      },
+      {
+        "obj": "properties.Property",
+        "name": "donations__payment_methods__fk.title",
+        "alias": "payment_methods__title"
+      },
+      {
+        "obj": "properties.Property",
+        "name": "donations.is_hidden",
+        "alias": "donations__is_hidden"
+      },
+      {
+        "obj": "properties.Property",
+        "name": "donations__referral_tags__fk.name",
+        "alias": "referral_tags__name"
+      },
+      {
+        "obj": "properties.Property",
+        "name": "donations.type",
+        "alias": "donations__type"
+      },
+      {
+        "obj": "properties.Property",
+        "name": "donations__payments__fk.sequence_no",
+        "alias": "payments__sequence_no"
+      }
+    ],
+    "conditions": {
+      "obj": "structures.Comparision",
+      "properties": [
         {
-          "obj": "structures.Order",
-          "property": {
-            "obj": "properties.Property",
-            "name": "warehouse_logs.created_at"
-          }
+          "obj": "properties.Property",
+          "name": "donations__payments__fk.status"
+        },
+        {
+          "obj": "properties.Array",
+          "values": [
+            {
+              "obj": "properties.Constant",
+              "value": "successful"
+            }
+          ]
         }
       ],
-      "position": 1
+      "operation": "in"
     },
-    {
-      "obj": "functions.Sum",
-      "alias": "volume_input",
-      "property": {
-        "obj": "structures.Case",
-        "conditions": [
-          {
-            "then": {
-              "obj": "properties.Property",
-              "name": "warehouse_logs.volume"
-            },
-            "when": {
-              "obj": "structures.Comparision",
-              "operation": "eq",
-              "properties": [
-                {
-                  "obj": "properties.Property",
-                  "name": "warehouse_logs.direction"
-                },
-                {
-                  "obj": "properties.Constant",
-                  "value": "in"
-                }
-              ]
-            }
-          }
-        ],
-        "alternative": {
-          "obj": "properties.Constant",
-          "value": "0"
-        }
+    "order": [
+      {
+        "obj": "structures.Order",
+        "property": {
+          "obj": "properties.Property",
+          "name": "payments__happened_at"
+        },
+        "kind": "DESC"
       }
+    ],
+    "limit": {
+      "obj": "structures.Limit",
+      "limit": 10,
+      "offset": 0
     },
-    {
-      "obj": "functions.Sum",
-      "alias": "volume_output",
-      "property": {
-        "obj": "structures.Case",
-        "conditions": [
-          {
-            "then": {
-              "obj": "properties.Property",
-              "name": "warehouse_logs.volume"
-            },
-            "when": {
-              "obj": "structures.Comparision",
-              "operation": "eq",
-              "properties": [
-                {
-                  "obj": "properties.Property",
-                  "name": "warehouse_logs.direction"
-                },
-                {
-                  "obj": "properties.Constant",
-                  "value": "out"
-                }
-              ]
-            }
-          }
-        ],
-        "alternative": {
-          "obj": "properties.Constant",
-          "value": "0"
-        }
-      }
-    },
-    {
-      "obj": "structures.Operator",
-      "alias": "state",
-      "operation": "addition",
-      "properties": [
-        {
-          "obj": "functions.ArrayAgg",
-          "property": {
-            "obj": "properties.Property",
-            "name": "warehouse_logs.original_state_material_purpose_code"
-          },
-          "order": [
+    "joins": [
+      {
+        "obj": "structures.Join",
+        "entity": "donors",
+        "type": "left",
+        "on": {
+          "obj": "structures.Comparision",
+          "properties": [
             {
-              "obj": "structures.Order",
-              "property": {
-                "obj": "properties.Property",
-                "name": "warehouse_logs.created_at"
-              }
+              "obj": "properties.Property",
+              "name": "donations__donors__fk.id"
+            },
+            {
+              "obj": "properties.Property",
+              "name": "donations.donor_id"
             }
           ],
-          "position": 1
+          "operation": "eq"
         },
-        {
-          "obj": "functions.Sum",
-          "property": {
-            "obj": "structures.Case",
-            "conditions": [
-              {
-                "then": {
-                  "obj": "properties.Property",
-                  "name": "warehouse_logs.volume"
-                },
-                "when": {
-                  "obj": "structures.Comparision",
-                  "operation": "eq",
-                  "properties": [
-                    {
-                      "obj": "properties.Property",
-                      "name": "warehouse_logs.direction"
-                    },
-                    {
-                      "obj": "properties.Constant",
-                      "value": "in"
-                    }
-                  ]
-                }
-              }
-            ],
-            "alternative": {
-              "obj": "properties.Constant",
-              "value": "0"
+        "alias": "donations__donors__fk"
+      },
+      {
+        "obj": "structures.Join",
+        "entity": "campaigns",
+        "type": "left",
+        "on": {
+          "obj": "structures.Comparision",
+          "properties": [
+            {
+              "obj": "properties.Property",
+              "name": "donations__campaigns__fk.id"
+            },
+            {
+              "obj": "properties.Property",
+              "name": "donations.campaign_id"
             }
-          }
+          ],
+          "operation": "eq"
         },
-        {
-          "obj": "functions.Sum",
-          "property": {
-            "obj": "structures.Case",
-            "conditions": [
-              {
-                "then": {
-                  "obj": "structures.Operator",
-                  "operation": "multiplication",
-                  "properties": [
-                    {
-                      "obj": "properties.Property",
-                      "name": "warehouse_logs.volume"
-                    },
-                    {
-                      "obj": "properties.Constant",
-                      "value": "-1"
-                    }
-                  ]
-                },
-                "when": {
-                  "obj": "structures.Comparision",
-                  "operation": "eq",
-                  "properties": [
-                    {
-                      "obj": "properties.Property",
-                      "name": "warehouse_logs.direction"
-                    },
-                    {
-                      "obj": "properties.Constant",
-                      "value": "out"
-                    }
-                  ]
-                }
-              }
-            ],
-            "alternative": {
-              "obj": "properties.Constant",
-              "value": "0"
+        "alias": "donations__campaigns__fk"
+      },
+      {
+        "obj": "structures.Join",
+        "entity": "payments",
+        "type": "right",
+        "on": {
+          "obj": "structures.Comparision",
+          "properties": [
+            {
+              "obj": "properties.Property",
+              "name": "donations.id"
+            },
+            {
+              "obj": "properties.Property",
+              "name": "donations__payments__fk.donation_id"
             }
-          }
-        }
-      ]
-    },
-    {
-      "obj": "functions.Sum",
-      "alias": "volume_input_price",
-      "property": {
-        "obj": "structures.Operator",
-        "operation": "multiplication",
-        "properties": [
-          {
-            "obj": "structures.Case",
-            "conditions": [
-              {
-                "then": {
-                  "obj": "properties.Property",
-                  "name": "warehouse_logs.volume"
-                },
-                "when": {
-                  "obj": "structures.Comparision",
-                  "operation": "eq",
-                  "properties": [
-                    {
-                      "obj": "properties.Property",
-                      "name": "warehouse_logs.direction"
-                    },
-                    {
-                      "obj": "properties.Constant",
-                      "value": "in"
-                    }
-                  ]
-                }
-              }
-            ],
-            "alternative": {
-              "obj": "properties.Constant",
-              "value": "0"
+          ],
+          "operation": "eq"
+        },
+        "alias": "donations__payments__fk"
+      },
+      {
+        "obj": "structures.Join",
+        "entity": "organisations",
+        "type": "left",
+        "on": {
+          "obj": "structures.Comparision",
+          "properties": [
+            {
+              "obj": "properties.Property",
+              "name": "campaigns__organisations__fk.id"
+            },
+            {
+              "obj": "properties.Property",
+              "name": "donations__campaigns__fk.organisation_id"
             }
-          },
-          {
-            "obj": "properties.Property",
-            "name": "warehouse_logs.price_per_unit"
-          }
-        ]
+          ],
+          "operation": "eq"
+        },
+        "alias": "campaigns__organisations__fk"
+      },
+      {
+        "obj": "structures.Join",
+        "entity": "referral_tags",
+        "type": "left",
+        "on": {
+          "obj": "structures.Comparision",
+          "properties": [
+            {
+              "obj": "properties.Property",
+              "name": "donations__referral_tags__fk.id"
+            },
+            {
+              "obj": "properties.Property",
+              "name": "donations.referral_tag_id"
+            }
+          ],
+          "operation": "eq"
+        },
+        "alias": "donations__referral_tags__fk"
+      },
+      {
+        "obj": "structures.Join",
+        "entity": "payment_methods",
+        "type": "left",
+        "on": {
+          "obj": "structures.Comparision",
+          "properties": [
+            {
+              "obj": "properties.Property",
+              "name": "donations__payment_methods__fk.id"
+            },
+            {
+              "obj": "properties.Property",
+              "name": "donations.payment_method_id"
+            }
+          ],
+          "operation": "eq"
+        },
+        "alias": "donations__payment_methods__fk"
       }
-    },
-    {
-      "obj": "functions.Sum",
-      "alias": "volume_output_price",
-      "property": {
-        "obj": "structures.Operator",
-        "operation": "multiplication",
-        "properties": [
-          {
-            "obj": "structures.Case",
-            "conditions": [
-              {
-                "then": {
-                  "obj": "properties.Property",
-                  "name": "warehouse_logs.volume"
-                },
-                "when": {
-                  "obj": "structures.Comparision",
-                  "operation": "eq",
-                  "properties": [
-                    {
-                      "obj": "properties.Property",
-                      "name": "warehouse_logs.direction"
-                    },
-                    {
-                      "obj": "properties.Constant",
-                      "value": "out"
-                    }
-                  ]
-                }
-              }
-            ],
-            "alternative": {
-              "obj": "properties.Constant",
-              "value": "0"
-            }
-          },
-          {
-            "obj": "properties.Property",
-            "name": "warehouse_logs.price_per_unit"
-          }
-        ]
-      }
-    },
-    {
-      "obj": "structures.Operator",
-      "alias": "state_price",
-      "operation": "addition",
-      "properties": [
-        {
-          "obj": "functions.Sum",
-          "property": {
-            "obj": "structures.Operator",
-            "operation": "multiplication",
-            "properties": [
-              {
-                "obj": "structures.Case",
-                "conditions": [
-                  {
-                    "then": {
-                      "obj": "properties.Property",
-                      "name": "warehouse_logs.volume"
-                    },
-                    "when": {
-                      "obj": "structures.Comparision",
-                      "operation": "eq",
-                      "properties": [
-                        {
-                          "obj": "properties.Property",
-                          "name": "warehouse_logs.direction"
-                        },
-                        {
-                          "obj": "properties.Constant",
-                          "value": "in"
-                        }
-                      ]
-                    }
-                  }
-                ],
-                "alternative": {
-                  "obj": "properties.Constant",
-                  "value": "0"
-                }
-              },
-              {
-                "obj": "properties.Property",
-                "name": "warehouse_logs.price_per_unit"
-              }
-            ]
-          }
-        },
-        {
-          "obj": "functions.Sum",
-          "property": {
-            "obj": "structures.Operator",
-            "operation": "multiplication",
-            "properties": [
-              {
-                "obj": "structures.Case",
-                "conditions": [
-                  {
-                    "then": {
-                      "obj": "structures.Operator",
-                      "operation": "multiplication",
-                      "properties": [
-                        {
-                          "obj": "properties.Property",
-                          "name": "warehouse_logs.volume"
-                        },
-                        {
-                          "obj": "properties.Constant",
-                          "value": "-1"
-                        }
-                      ]
-                    },
-                    "when": {
-                      "obj": "structures.Comparision",
-                      "operation": "eq",
-                      "properties": [
-                        {
-                          "obj": "properties.Property",
-                          "name": "warehouse_logs.direction"
-                        },
-                        {
-                          "obj": "properties.Constant",
-                          "value": "out"
-                        }
-                      ]
-                    }
-                  }
-                ],
-                "alternative": {
-                  "obj": "properties.Constant",
-                  "value": "0"
-                }
-              },
-              {
-                "obj": "properties.Property",
-                "name": "warehouse_logs.price_per_unit"
-              }
-            ]
-          }
-        }
-      ]
-    }
-  ]
-}
+    ]
+  }
