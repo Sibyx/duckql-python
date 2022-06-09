@@ -10,11 +10,11 @@
 
 ## Object attributes
 
-| Attribute       | Accepts                                                                                | Required |
-|-----------------|----------------------------------------------------------------------------------------|----------|
-| obj             | `structures.Order`                                                                     | True     |
-| property        | `functions.*` `properties.Property`                                                    | True     |
-| kind            | Enum[`ASC` `DESC`]                                                                     | False    |
+| Attribute       | Accepts                                                      | Required |
+|-----------------|--------------------------------------------------------------|----------|
+| obj             | `structures.Order`                                           | True     |
+| property        | `functions.*` `properties.Property` `strctures.CastOperator` | True     |
+| kind            | Enum[`ASC` `DESC`]                                           | False    |
 
 
 ## JSON format
@@ -34,4 +34,3 @@
 ```sql
 users.name ASC
 ```
-
