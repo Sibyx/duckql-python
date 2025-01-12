@@ -21,7 +21,7 @@ setup(
     ],
     install_requires=[
         'pydantic==1.*',
-        'click==7.*',
+        'click==8.*',
         'typing-extensions'
     ],
     url='https://github.com/Sibyx/duckql-python',
@@ -41,9 +41,10 @@ setup(
         'Development Status :: 4 - Beta',
         'Environment :: Console',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',

@@ -1,6 +1,16 @@
 # Changelog
 
-## 0.13.0  : 2022-06-09
+## 0.14.0 : 2024-01-12
+
+⚠️ This release is not working with Python 3.13!! ⚠️
+
+Chores, chores and chores. This will be probably the last release based on the Pydantic 1.x.
+
+🌈 Pink fluffy unicorns dancing on rainbows 🌈
+
+- **Changed**: Dropped support for Python 3.7 and 3.8
+
+## 0.13.0 : 2022-06-09
 
 - **Added**: Ability to use casting for `ORDER BY` property
 
