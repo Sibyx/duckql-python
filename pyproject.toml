@@ -6,7 +6,7 @@ authors = ["Jakub Dubec <jakub.dubec@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.7"
 click = "^8.0"
 pydantic = "^1.0"
 typing-extensions = "^3.7.4"
