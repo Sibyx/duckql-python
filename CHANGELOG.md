@@ -2,7 +2,7 @@
 
 ## 0.14.0 : 2024-01-12
 
-⚠️ This release is not working with Python 3.13!! ⚠️
+⚠️ This release is not working with Python 3.13 and 3.12!! ⚠️
 
 Chores, chores and chores. This will be probably the last release based on the Pydantic 1.x.
 
